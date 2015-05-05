@@ -8,7 +8,6 @@ class MainController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        echo 'hello doudou';
         return $this->render('index');
     }
 
