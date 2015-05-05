@@ -4,7 +4,7 @@ namespace app\modules\user\controllers;
 
 class MainController extends \yii\web\Controller
 {
-    public $layout = 'main';
+    public $layout = 'first';
 
     public function actionIndex()
     {

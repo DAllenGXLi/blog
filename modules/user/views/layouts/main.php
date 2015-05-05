@@ -15,25 +15,23 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
                   <?php
                   if( !Yii::$app->user->identity==null ) {
                       echo '
-                            <span style="float: right">'.Yii::$app->user->identity->username.'</span>
+                            <span style="float: right"><a href="'. Yii::$app->urlManager->createUrl(["user/default/logout"]) .'">'.Yii::$app->user->identity->username.'</a></span>
                     ';
-                  }else{
-                      echo 'aaa';
                   }
                   ?>
 
                 </div><!-- /.row -->
             </div>
         </div>
+    </div>
 
 
-
-        <div class="container" style="margin-top: 10px; margin-bottom: 20px;">
+        <div class="container" style="margin-top: 10px; margin-bottom: 20px; background-color: rgba(244, 244, 245, 0.89)" >
 
 
             <?= $content ?>
 
         </div>
 
-    </div>
+
 <?php $this->endContent(); ?>

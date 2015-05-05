@@ -21,7 +21,7 @@
                 </span>
             </div>
             <!--            audio-->
-            <audio class="audio" src="/liguoxian.com/res/music/seeYouAgain.mp3" controls="controls">
+            <audio class="audio" src="/liguoxian/modules/user/res/music/seeYouAgain.mp3" controls="controls">
                 Your browser does not support the audio element.
             </audio>
 <!--            button-->
@@ -44,7 +44,7 @@
                 </span>
             </div>
             <!--            audio-->
-            <audio class="audio" src="/liguoxian.com/res/music/higher.mp3" controls="controls">
+            <audio class="audio" src="/liguoxian/modules/user/res/music/higher.mp3" controls="controls">
                 Your browser does not support the audio element.
             </audio>
             <!--            button-->

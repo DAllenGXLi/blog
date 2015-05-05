@@ -16,7 +16,7 @@ $this->registerJsFile('js/bootstrap.min.js');
         <?php $this->head() ?>
     </head>
 
-    <body>
+    <body style="background-color: rgba(228, 228, 229, 0.89)">
         <?php $this->beginBody() ?>
 
 

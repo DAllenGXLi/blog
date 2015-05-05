@@ -7,14 +7,14 @@ use Yii;
 use app\models\Users;
 class DefaultController extends Controller
 {
-    public $layout = 'default';
+    public $layout = 'main';
 
     public function actionLogin()
     {
 
 
         if (!\Yii::$app->user->isGuest) {
-//            return $this->redirect(['user/main/index']);
+            return $this->redirect(['main/index']);
         }
 
         $model = new Users();
@@ -30,9 +30,8 @@ class DefaultController extends Controller
 
     public function actionLogout()
     {
-        var_dump("hello allen");
         Yii::$app->user->logout();
-//        return $this->redirect(['/user/main/index']);
+        return $this->redirect(['default/login']);
     }
 
 
