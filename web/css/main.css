@@ -1,0 +1,38 @@
+#div_main {
+    background-color: snow;
+}
+
+.comment-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.comment-detail {
+    font-size: 8px;
+    font-weight: bold;
+    float: right;
+    color: #777777;
+}
+
+.comment-text {
+    color: #262626;
+    font-weight: 500;
+}
+
+.comment-button {
+    float: right;
+    margin-left: 10px;
+}
+
+.film-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.custom_hr {
+    margin: 2px;
+}
+
+.audio {
+    /*float: right;*/
+}
