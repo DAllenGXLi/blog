@@ -8,22 +8,43 @@ class MainController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        if (!\Yii::$app->user->isGuest) {
+            return $this->render('index');
+        }
+        else{
+            return $this->redirect(['default/login']);
+        }
+
     }
 
     public function actionMusic()
     {
-        return $this->render('music');
+        if (!\Yii::$app->user->isGuest) {
+            return $this->render('music');
+        }
+        else{
+            return $this->redirect(['default/login']);
+        }
     }
 
     public function actionFilm()
     {
-        return $this->render('film');
+        if (!\Yii::$app->user->isGuest) {
+            return $this->render('film');
+        }
+        else{
+            return $this->redirect(['default/login']);
+        }
     }
 
     public function actionGame()
     {
-        return $this->render('game');
+        if (!\Yii::$app->user->isGuest) {
+            return $this->render('game');
+        }
+        else{
+            return $this->redirect(['default/login']);
+        }
     }
 
 

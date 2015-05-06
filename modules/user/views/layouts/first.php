@@ -68,8 +68,8 @@
                 <ul class="nav nav-tabs"  style="margin-top: 20px">
                     <li role="presentation" class="active"><a href="#"><b>Best Of The Week</b></a></li>
                     <li role="presentation"><a href="">Article</a></li>
-                    <li role="presentation"><a href="">Music</a></li>
-                    <li role="presentation"><a href="">Film</a></li>
+                    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(['user/main/music']) ?>">Music</a></li>
+                    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(['user/main/film']) ?>">Film</a></li>
                     <li role="presentation"><a href="">Picture</a></li>
                     <li role="presentation"><a href="">comment</a></li>
             </div>

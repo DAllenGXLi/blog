@@ -2,10 +2,11 @@
 
 use yii\helpers\Html;
 
-$this->registerCssFile('css/main.css');
+
 $this->registerCssFile('css/bootstrap.min.css');
 $this->registerJsFile('js/jquery-1.11.2.min.js');
 $this->registerJsFile('js/bootstrap.min.js');
+$this->registerCssFile('css/main.css');
 ?>
 
 <?php $this->beginPage() ?>
