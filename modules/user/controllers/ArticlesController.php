@@ -27,4 +27,10 @@ class ArticlesController extends \yii\web\Controller
         return $this->redirect(['default/login']);
     }
 
+    public function actionSpecific($id)
+    {
+        $model = Articles::findOne($id);
+        return $this->render('specific',['model'=>$model]);
+    }
+
 }

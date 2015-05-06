@@ -41,3 +41,13 @@
 .head_navigation_2 {
     margin-bottom: 30px;
 }
+
+.article {
+    color: rgba(15, 15, 15, 0.89);
+    font-size: 16px;
+}
+
+.article_title {
+    font-size: 24px;
+    font-weight: bold;
+}
