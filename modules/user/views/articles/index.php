@@ -1,19 +1,24 @@
-<!--    navigation-->
-<ul class="nav nav-pills nav nav-pills nav-justified head_navigation_2">
-    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(["user/main/index"]) ?>">Home</a></li>
-    <li role="presentation" class="active"><a href="<?= Yii::$app->urlManager->createUrl(["user/articles/index"]) ?>">Article</a></li>
-    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(["user/photos/index"]) ?>">Photo</a></li>
-    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(["user/message-board/index"]) ?>">MB</a></li>
-    <li role="presentation"><a href="#">Contact</a></li>
-</ul>
+
 
 <?php
 use yii\widgets\LinkPager;
 use yii\helpers\Html;
+use app\models\Users;
+
+
+$js = 'document.getElementById("article_type_1").setAttribute("class", "active") ';
+$this->registerJs($js, \yii\web\View::POS_READY);
+
+
+$js_navigation = 'document.getElementById("navigation_type_2").setAttribute("class", "active") ';
+$this->registerJs($js_navigation, \yii\web\View::POS_READY);
 
 
 foreach ($models as $model) {
 // 在这里显示 $model
+    //获取文章作者
+    $user_id = $model->user_id;
+    $user = Users::findOne($user_id);
     ?>
 
 
@@ -23,8 +28,11 @@ foreach ($models as $model) {
             <a href="
             <?= Yii::$app->urlManager->createUrl(['user/articles/specific','id'=>$model->id]) ?>
             "><h2 class="panel-title"><b><?= Html::encode($model->title) ?></b></h2></a>
-<!--        文章时间-->
-            <span class="comment-detail" style="position: relative; bottom: 15px;"><?= Html::encode($model->create_at) ?></span>
+<!--        文章时间 作者-->
+            <span class="comment-detail"
+                  style="position: relative; bottom: 15px;"><span style="margin-right: 10px">
+                    <a><?=Html::encode($user->username) ?></a></span>
+                <?= Html::encode($model->create_at) ?></span>
         </div>
         <div class="panel-body">
             <span class="article">

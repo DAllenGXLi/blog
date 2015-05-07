@@ -8,14 +8,14 @@ use yii\data\Pagination;
 
 class ArticlesController extends \yii\web\Controller
 {
-    public $layout = 'main';
+    public $layout = 'article_index';
     public function actionIndex()
     {
         if (!\Yii::$app->user->isGuest) {
             //page
             $query = Articles::find();
             $pages = new Pagination(['totalCount'=>$query->count()]);
-            $pages->pageSize = 4;
+            $pages->pageSize = ARTICLE_PAGE_SIZE;
             $models = $query->offset($pages->offset)
         ->limit($pages->limit)
         ->all();

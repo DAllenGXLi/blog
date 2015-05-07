@@ -1,4 +1,5 @@
 <?php
+//基础导航及logo
 ?>
 <?php
 $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
@@ -28,6 +29,19 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
 
         <div class="container" style="margin-top: 10px; margin-bottom: 20px; background-color: rgba(244, 244, 245, 0.89)" >
 
+            <!--    navigation-->
+            <ul class="nav nav-pills nav nav-pills nav-justified head_navigation_2">
+                <li role="presentation" id="navigation_type_1"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/main/index"]) ?>">Home</a></li>
+                <li role="presentation" id="navigation_type_2"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/articles/index"]) ?>">Article</a></li>
+                <li role="presentation" id="navigation_type_3"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/photos/index"]) ?>">Photo</a></li>
+                <li role="presentation" id="navigation_type_4"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/message-board/index"]) ?>">MB</a></li>
+                <li role="presentation" id="navigation_type_5"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/contact/index"]) ?>">Contact</a></li>
+            </ul>
 
             <?= $content ?>
 

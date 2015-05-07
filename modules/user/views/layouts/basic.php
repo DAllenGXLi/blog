@@ -1,5 +1,5 @@
 <?php
-
+//引入全局样式，js文件等，设定背景颜色，框架
 use yii\helpers\Html;
 
 
