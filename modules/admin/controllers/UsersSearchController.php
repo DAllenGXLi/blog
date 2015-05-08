@@ -14,7 +14,7 @@ use yii\filters\VerbFilter;
 class UsersSearchController extends Controller
 {
     public $layout = 'main';
-
+    public $enableCsrfValidation = false;
     public function behaviors()
     {
         return [

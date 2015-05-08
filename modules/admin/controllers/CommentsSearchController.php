@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
  */
 class CommentsSearchController extends Controller
 {
+    public $enableCsrfValidation = false;
     public $layout = 'main';
     public function behaviors()
     {
