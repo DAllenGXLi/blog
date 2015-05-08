@@ -70,26 +70,71 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
     </ul>
 
 
+<!--    title-->
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><b>标题题</b></span>
+        <input type="text" id="article_title" class="form-control" placeholder="请输入你的标题" aria-describedby="basic-addon1">
+    </div>
+
 <!--    富文本编辑器-->
 
     <!--style给定宽度可以影响编辑器的最终宽度-->
-    <script type="text/plain" id="myEditor" style="width:1000px;height:240px;">
-    <p>这里我可以写一些输入提示</p>
-</script>
-
-
+    <script type="text/plain" id="myEditor" style="width:100%; height:240px;"></script>
     <div class="clear"></div>
 
     <script type="text/javascript">
         //实例化编辑器
         var um = UM.getEditor('myEditor');
 
-        
+        //创建虚拟表单并提交
+        function articleSubmit() {
+
+
+            var form = document.createElement("form");
+            document.body.appendChild(form);
+            form.method = 'post';
+            //内容
+            var content = document.createElement('input');
+            content.value = UM.getEditor('myEditor').getContent();
+            content.name = 'content';
+            content.type = 'hidden';
+
+            //标题
+            var title = document.createElement('input');
+            title.value = document.getElementById('article_title').value ;
+            title.name = 'title';
+            title.type = 'hidden';
+
+            //user id
+            //标题
+            var user_id = document.createElement('input');
+            user_id.value = '<?= Yii::$app->user->identity->id ?>' ;
+            user_id.name = 'user_id';
+            user_id.type = 'hidden';
+
+            form.appendChild(content);
+            form.appendChild(title);
+            form.appendChild(user_id);
+
+            if(title.value=='' && content.value=='') {
+                alert('标题或者内容不能为空!');
+                return ;
+            }
+            else if( content.value.length <=<?= ARTICLE_MIN_NUM ?> ) {
+                alert('内容太少啦，再写多一点吧');
+                return ;
+            }
+            form.submit();
+        }
 
     </script>
 
 <!--    富文本编辑器结束-->
+
+    <!-- Standard button -->
+    <button type="button" class="btn btn-default" onclick="articleSubmit()">提交</button>
 </div>
+
 
 
 <?php $this->endContent(); ?>

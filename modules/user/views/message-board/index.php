@@ -32,10 +32,12 @@ foreach ($models as $model) {
         </div>
         <div class="panel-body" style="padding-bottom: 0px">
             <span class="article">
-            <?=  Html::encode($model->content) ?>
+            <?=  $model->content ?>
                 </span>
+            <div>
             <a type="button" class="btn btn-sm btn-info comment-button">评论</a>
             <a type="button" class="btn btn-sm btn-success comment-button">点赞</a>
+            </div>
         </div>
     </div>
 

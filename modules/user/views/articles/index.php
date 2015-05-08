@@ -36,12 +36,9 @@ foreach ($models as $model) {
         </div>
         <div class="panel-body">
             <span class="article">
-            <?=  Html::encode(substr($model->content,0,300).' ...') ?>
+            <?=  substr($model->content,0,ARTICLE_REVIEW_NUM).' ...' ?>
                 </span>
-            <a type="button" class="btn btn-sm btn-info comment-button" href="
-            <?= Yii::$app->urlManager->createUrl(['user/articles/specific','id'=>$model->id]) ?>">阅读全文</a>
-            <a type="button" class="btn btn-sm btn-info comment-button">评论</a>
-            <a type="button" class="btn btn-sm btn-success comment-button">点赞</a>
+            <a type="button" class=""></a>
         </div>
     </div>
 

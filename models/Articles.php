@@ -52,4 +52,17 @@ class Articles extends \yii\db\ActiveRecord
             'change_at' => 'Change At',
         ];
     }
+
+    public static function loadForArticle($user_id, $title, $content)
+    {
+        date_default_timezone_set("Etc/GMT+8");
+        $model = new Articles();
+        $model->user_id = $user_id;
+        $model->content = $content;
+        $model->title = $title;
+        $model->create_at = date('Y-m-d H:i:s',time());
+        $model->change_at = date('Y-m-d H:i:s',time());
+        $model->save();
+    }
+
 }
