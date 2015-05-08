@@ -27,7 +27,7 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
     </div>
 
 
-        <div class="container" style="margin-top: 10px; margin-bottom: 20px; background-color: rgba(244, 244, 245, 0.89)" >
+        <div class="container" style="padding-bottom: 100px; margin-top: 10px; margin-bottom: 20px; background-color: rgba(244, 244, 245, 0.89)" >
 
             <!--    navigation-->
             <ul class="nav nav-pills nav nav-pills nav-justified head_navigation_2">

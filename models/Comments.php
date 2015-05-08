@@ -49,4 +49,16 @@ class Comments extends \yii\db\ActiveRecord
             'create_at' => 'Create At',
         ];
     }
+
+    //留言板
+    public static function loadForMB($user_id, $content)
+    {
+        date_default_timezone_set("Etc/GMT+8");
+        $model = new Comments();
+        $model->article_id = 0;
+        $model->content = $content;
+        $model->user_id = $user_id;
+        $model->create_at = date('Y-m-d H:i:s',time());
+        $model->save();
+    }
 }

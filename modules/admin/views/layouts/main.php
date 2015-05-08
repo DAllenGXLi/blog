@@ -36,8 +36,6 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
         <?= Yii::$app->urlManager->createUrl(["admin/articles-search/index"]) ?>">Article</a></li>
         <li role="presentation" id="back_nav_id_3" ><a href="
         <?= Yii::$app->urlManager->createUrl(["admin/comments-search/index"]) ?>">Comments</a></li>
-        <li role="presentation" id="back_nav_id_4"><a href="
-        <?= Yii::$app->urlManager->createUrl(["admin/a/index"]) ?>">MessageBoard</a></li>
     </ul>
 </div>
 
