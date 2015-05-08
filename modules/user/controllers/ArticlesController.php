@@ -33,4 +33,10 @@ class ArticlesController extends \yii\web\Controller
         return $this->render('specific',['model'=>$model]);
     }
 
+    public function actionWrite()
+    {
+        $this->layout = false;
+        return $this->render('write');
+    }
+
 }

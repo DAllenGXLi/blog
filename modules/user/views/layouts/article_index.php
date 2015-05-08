@@ -27,6 +27,9 @@ $this->beginContent('@app/modules/user/views/layouts/main.php'); ?>
         <li role="presentation" id="article_type_5" ><a href="#">泡妞把妹专区</a></li>
         <li role="presentation" id="article_type_6" ><a href="#">吐槽专区</a></li>
     </ul>
+
+        <a class="btn btn-danger btn-lg btn-block" style="margin-top: 30px" href="
+        <?= Yii::$app->urlManager->createUrl(["user/articles/write"]) ?>" role="button">发表文章</a>
     </div>
 
     </div>
