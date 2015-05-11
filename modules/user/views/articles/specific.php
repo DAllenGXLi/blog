@@ -16,8 +16,11 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
     <div class="panel-heading">
         <!--            文章标题-->
         <h2 class="panel-title article_title"><b><?= Html::encode($model->title) ?></b></h2>
-        <!--        文章时间-->
-        <span class="comment-detail" style="position: relative; bottom: 15px;"><?= Html::encode($model->create_at) ?></span>
+        <!--        文章时间 作者-->
+            <span class="comment-detail"
+                  style="position: relative; bottom: 15px;"><span style="margin-right: 10px">
+                    <a><?=Html::encode(Yii::$app->user->identity->username) ?></a></span>
+                <?= Html::encode($model->create_at) ?></span>
     </div>
     <div class="panel-body">
          <span class="article">

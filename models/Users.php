@@ -96,6 +96,9 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function register()
     {
+        if(!$this->validate())
+            return false;
+        $this->save();
         return true;
     }
 

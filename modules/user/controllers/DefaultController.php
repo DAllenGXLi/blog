@@ -2,6 +2,7 @@
 
 namespace app\modules\user\controllers;
 
+use backend\models\UserSearch;
 use yii\web\Controller;
 use Yii;
 use app\models\Users;
@@ -32,6 +33,18 @@ class DefaultController extends Controller
     {
         Yii::$app->user->logout();
         return $this->redirect(['default/login']);
+    }
+
+    public function actionRegister()
+    {
+        $model = new Users();
+        $model->setScenario('register');
+        if( $model->load(Yii::$app->request->post()) && $model->register() )
+        {
+            var_dump('aaa');
+            return $this->redirect(['default/login']);
+        }
+        return $this->render('register',['model'=>$model]);
     }
 
 

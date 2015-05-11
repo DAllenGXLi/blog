@@ -15,4 +15,4 @@ define('MB_ARTICLE_ID',0);
 //article 最少字数
 define('ARTICLE_MIN_NUM',1000);
 //article 预览中预览的文章字数
-define('ARTICLE_REVIEW_NUM',800);
+define('ARTICLE_REVIEW_NUM',500);
