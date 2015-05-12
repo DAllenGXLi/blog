@@ -2,6 +2,11 @@
     background-color: snow;
 }
 
+.nav_head {
+    background-color: #3c3c3c;
+    height: 50px;
+}
+
 .comment-title {
     font-size: 14px;
     font-weight: bold;
@@ -51,3 +56,24 @@
     font-size: 24px;
     font-weight: bold;
 }
+
+.nav_user a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.nav_head ul {
+    background-color: #3c3c3c;
+}
+
+.nav_head .dropdown-menu a{
+    color: rgba(215, 215, 216, 0.89);
+}
+
+.nav_head .dropdown-menu a:hover {
+    background-color: #505050;
+    color: rgba(246, 246, 247, 0.89);
+}
+
+

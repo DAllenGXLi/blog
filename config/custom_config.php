@@ -16,3 +16,5 @@ define('MB_ARTICLE_ID',0);
 define('ARTICLE_MIN_NUM',1000);
 //article 预览中预览的文章字数
 define('ARTICLE_REVIEW_NUM',500);
+//定义yii web目录上一个目录（主目录）绝对路径
+define('DOCUMENT_ROOT', '/liguoxian');

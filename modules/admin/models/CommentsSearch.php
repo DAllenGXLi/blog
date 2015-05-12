@@ -18,7 +18,7 @@ class CommentsSearch extends Comments
     public function rules()
     {
         return [
-            [['id', 'user_id', 'article_id'], 'integer'],
+            [['id', 'user_id', 'article_id','thumb_up'], 'integer'],
             [['content', 'create_at'], 'safe'],
         ];
     }
@@ -58,6 +58,7 @@ class CommentsSearch extends Comments
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'thumb_up' => $this->thumb_up,
             'article_id' => $this->article_id,
             'create_at' => $this->create_at,
         ]);

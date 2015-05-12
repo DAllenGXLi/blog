@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'user_id',
             'article_id',
+            'thumb_up',
             'content',
             'create_at',
 

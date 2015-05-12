@@ -41,6 +41,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
             [['username'], 'string', 'max' => 20],
             [['email'], 'string', 'max' => 40],
             [['password'], 'string', 'max' => 64],
+            ['password', 'validatePassword'],
             [['auto_key', 'access_token'], 'string', 'max' => 30],
             [['username', 'email'], 'unique', 'targetAttribute' => ['username', 'email'], 'message' => 'The combination of Username and Email has already been taken.']
         ];
@@ -72,6 +73,19 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
             'login'=>[ 'username', 'password'],
             'register'=>['username', 'password','email']
         ];
+    }
+
+    public function validatePassword($attribute, $params)
+    {
+        if( !$this->hasErrors() ) {
+            $user = Users::findOne(['username'=>$this->username]);
+
+            if( !$user || !($this->password === $user->password) ) {
+
+                $this->addError($attribute, 'Incorrect password or mail!');
+            }
+
+        }
     }
 
     public function login()

@@ -28,25 +28,25 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
             <!-- Wrapper for slides -->
             <div   class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="/liguoxian/modules/user/res/home/1.jpg" alt="...">
+                    <img src="<?=  DOCUMENT_ROOT ?>/modules/user/res/home/1.jpg" alt="...">
                     <div class="carousel-caption">
                         picture 1
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/liguoxian/modules/user/res/home/2.jpg" alt="...">
+                    <img src="<?=  DOCUMENT_ROOT ?>/modules/user/res/home/2.jpg" alt="...">
                     <div class="carousel-caption">
                         picture 2
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/liguoxian/modules/user/res/home/3.jpg" alt="...">
+                    <img src="<?=  DOCUMENT_ROOT ?>/modules/user/res/home/3.jpg" alt="...">
                     <div class="carousel-caption">
                         picture 3
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/liguoxian/modules/user/res/home/4.jpg" alt="...">
+                    <img src="<?=  DOCUMENT_ROOT ?>/modules/user/res/home/4.jpg" alt="...">
                     <div class="carousel-caption">
                         picture 4
                     </div>
@@ -60,11 +60,17 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
             <div class="col-md-10 col-md-offset-0">
                 <ul class="nav nav-tabs"  style="margin-top: 20px">
                     <li role="presentation" class="active"><a href="#"><b>Best Of The Week</b></a></li>
-                    <li role="presentation"><a href="">Article</a></li>
-                    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(['user/main/music']) ?>">Music</a></li>
-                    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(['user/main/film']) ?>">Film</a></li>
-                    <li role="presentation"><a href="">Picture</a></li>
-                    <li role="presentation"><a href="">comment</a></li>
+                    <li role="presentation"><a href="">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Article</a></li>
+                    <li role="presentation">
+                        <a href="<?= Yii::$app->urlManager->createUrl(['user/main/music']) ?>">
+                            <span class="glyphicon glyphicon-music" aria-hidden="true"></span> Music</a></li>
+                    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(['user/main/film']) ?>">
+                            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Film</a></li>
+                    <li role="presentation"><a href="">
+                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Picture</a></li>
+                    <li role="presentation"><a href="">
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> comment</a></li>
             </div>
         </div>
 

@@ -15,6 +15,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 
+    <?= $form->field($model, 'thumb_up')->textInput() ?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => 100]) ?>
 
     <?= $form->field($model, 'content')->textInput(['maxlength' => 9999]) ?>

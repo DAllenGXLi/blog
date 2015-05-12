@@ -27,8 +27,12 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
         <?=  $model->content ?>
              </span>
         <div>
-        <a type="button" class="btn btn-sm btn-info comment-button">评论</a>
-        <a type="button" class="btn btn-sm btn-success comment-button">点赞</a>
+            <a type="button" class="btn btn-sm btn-info comment-button">
+                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 评论</a>
+            <a type="button" class="btn btn-sm btn-success comment-button">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                <?= Html::encode($model->thumb_up) ?>
+            </a>
         </div>
     </div>
 </div>

@@ -72,7 +72,7 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
 
 <!--    title-->
     <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1"><b>标题题</b></span>
+        <span class="input-group-addon" id="basic-addon1"><b>标题</b></span>
         <input type="text" id="article_title" class="form-control" placeholder="请输入你的标题" aria-describedby="basic-addon1">
     </div>
 
@@ -120,7 +120,7 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
                 alert('标题或者内容不能为空!');
                 return ;
             }
-            else if( content.value.length <=<?= ARTICLE_MIN_NUM ?> ) {
+            else if( content.value.length <= <?= ARTICLE_MIN_NUM ?> ) {
                 alert('内容太少啦，再写多一点吧');
                 return ;
             }

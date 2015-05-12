@@ -23,6 +23,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
     <?= $form->field($model, 'article_id') ?>
 
+    <?= $form->field($model, 'thumb_up') ?>
+
     <?= $form->field($model, 'content') ?>
 
     <?= $form->field($model, 'create_at') ?>

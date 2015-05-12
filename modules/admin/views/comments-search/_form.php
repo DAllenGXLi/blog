@@ -18,6 +18,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
     <?= $form->field($model, 'article_id')->textInput() ?>
 
+    <?= $form->field($model, 'thumb_up')->textInput() ?>
+
     <?= $form->field($model, 'content')->textInput(['maxlength' => 300]) ?>
 
     <?= $form->field($model, 'create_at')->textInput() ?>

@@ -20,6 +20,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
     <?= $form->field($model, 'user_id') ?>
 
+    <?= $form->field($model, 'thumb_up') ?>
+
     <?= $form->field($model, 'title') ?>
 
     <?= $form->field($model, 'content') ?>
