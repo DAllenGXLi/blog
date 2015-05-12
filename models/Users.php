@@ -11,6 +11,7 @@ use yii\web\IdentityInterface;
  * @property integer $id
  * @property string $username
  * @property string $email
+ * @property string $head_portrait
  * @property string $password
  * @property string $create_at
  * @property integer $status
@@ -41,8 +42,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
             [['username'], 'string', 'max' => 20],
             [['email'], 'string', 'max' => 40],
             [['password'], 'string', 'max' => 64],
-            ['password', 'validatePassword'],
-            [['auto_key', 'access_token'], 'string', 'max' => 30],
+            [['head_portrait', 'auto_key', 'access_token'], 'string', 'max' => 30],
             [['username', 'email'], 'unique', 'targetAttribute' => ['username', 'email'], 'message' => 'The combination of Username and Email has already been taken.']
         ];
     }
@@ -58,6 +58,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
             'email' => 'Email',
             'password' => 'Password',
             'create_at' => 'Create At',
+            'head_portrait' => 'Head Portrait',
             'status' => 'Status',
             'auto_key' => 'Auto Key',
             'access_token' => 'Access Token',
@@ -71,7 +72,8 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'login'=>[ 'username', 'password'],
-            'register'=>['username', 'password','email']
+            'register'=>['username', 'password','email'],
+            'default'=>[],
         ];
     }
 
@@ -83,14 +85,16 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
             if( !$user || !($this->password === $user->password) ) {
 
                 $this->addError($attribute, 'Incorrect password or mail!');
+                return false;
             }
 
         }
+        return true;
     }
 
     public function login()
     {
-        if( !$this->validate() )
+        if( !$this->validate() || !$this->validatePassword('password',null) )
             return false;
         $user = Users::findOne( [ 'username'=>$this->username ] );
         if( $user==null )

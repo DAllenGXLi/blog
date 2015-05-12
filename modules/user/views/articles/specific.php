@@ -14,6 +14,10 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
 
 <div class="panel panel-info">
     <div class="panel-heading">
+
+        <!--            头像-->
+            <span style="float: left; position: relative; bottom: 4px">
+            <img src="<?=  DOCUMENT_ROOT ?>/res/img/head_portrait/000.jpg" height="36px"   /></span>
         <!--            文章标题-->
         <h2 class="panel-title article_title"><b><?= Html::encode($model->title) ?></b></h2>
         <!--        文章时间 作者-->

@@ -8,13 +8,14 @@ use app\modules\admin\models\UsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
 /**
  * UsersSearchController implements the CRUD actions for Users model.
  */
 class UsersSearchController extends Controller
 {
-    public $layout = 'main';
     public $enableCsrfValidation = false;
+    public $layout = 'main';
     public function behaviors()
     {
         return [
@@ -33,7 +34,6 @@ class UsersSearchController extends Controller
      */
     public function actionIndex()
     {
-
         $searchModel = new UsersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

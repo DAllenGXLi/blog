@@ -24,7 +24,10 @@ foreach ($models as $model) {
 
     <div class="panel panel-info">
         <div class="panel-heading">
-<!--            文章标题-->
+<!--            头像-->
+            <span style="float: left; position: relative; bottom: 8px">
+            <img src="<?=  DOCUMENT_ROOT ?>/res/img/head_portrait/000.jpg" height="32px"   /></span>
+            <!--            文章标题-->
             <a href="
             <?= Yii::$app->urlManager->createUrl(['user/articles/specific','id'=>$model->id]) ?>
             "><h2 class="panel-title"><b><?= Html::encode($model->title) ?></b></h2></a>
@@ -33,6 +36,7 @@ foreach ($models as $model) {
                   style="position: relative; bottom: 15px;"><span style="margin-right: 10px">
                     <a><?=Html::encode($user->username) ?></a></span>
                 <?= Html::encode($model->create_at) ?></span>
+
         </div>
         <div class="panel-body">
             <span class="article">

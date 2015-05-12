@@ -25,7 +25,9 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
     <?= $form->field($model, 'password') ?>
 
-    <?= $form->field($model, 'create_at') ?>
+    <?= $form->field($model, 'head_portrait') ?>
+
+    <?php // echo $form->field($model, 'create_at') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 

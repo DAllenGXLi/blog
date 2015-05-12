@@ -22,8 +22,9 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
 <!--                          用户信息-->
                         <a class=" dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             <span>
-                      <img src="<?=  DOCUMENT_ROOT ?>/res/img/head_portrait/000.jpg" height="42px" style="margin-bottom: 5px"  />
+                      <img src="<?=  DOCUMENT_ROOT ?>/res/img/head_portrait/000.jpg" height="42px"  />
                                 <?=Yii::$app->user->identity->username?></span>
+
                         </a>
                           <!--                  下拉菜单    -->
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >

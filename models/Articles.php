@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $user_id
+ * 		* @property integer $thumb_up
  * @property string $title
  * @property string $content
  * @property string $create_at
@@ -30,11 +31,11 @@ class Articles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'title', 'content', 'create_at', 'change_at'], 'required'],
-            [['user_id'], 'integer'],
+            [['user_id', 'thumb_up', 'title', 'content', 'create_at', 'change_at'], 'required'],
+            [['user_id', 'thumb_up'], 'integer'],
             [['create_at', 'change_at'], 'safe'],
             [['title'], 'string', 'max' => 100],
-            [['content'], 'string', 'max' => 9999]
+            [['content'], 'string', 'max' => 99999]
         ];
     }
 
@@ -46,6 +47,7 @@ class Articles extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
+            'thumb_up' => 'Thumb Up',
             'title' => 'Title',
             'content' => 'Content',
             'create_at' => 'Create At',

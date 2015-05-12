@@ -22,6 +22,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => 64]) ?>
 
+    <?= $form->field($model, 'head_portrait')->textInput(['maxlength' => 30]) ?>
+
     <?= $form->field($model, 'create_at')->textInput() ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
