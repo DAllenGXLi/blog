@@ -22,7 +22,7 @@ foreach ($models as $model) {
         <div class="panel-heading">
 <!--            头像-->
             <span style="float: left; position: relative; bottom: 8px">
-            <img src="<?=  DOCUMENT_ROOT ?>/res/img/head_portrait/000.jpg" height="32px"   /></span>
+            <img src="<?=  HEAD_PORTRAIT_ROOT ?>/<?= Users::findOne($model->user_id)->head_portrait ?>" height="32px"   /></span>
             <!--            文章标题-->
             <a href="
             <?= Yii::$app->urlManager->createUrl(['user/articles/specific','id'=>$model->id]) ?>

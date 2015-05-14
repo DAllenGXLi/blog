@@ -85,5 +85,9 @@
     text-decoration: none;
 }
 
-.panel-group
+.head_portrait_middle {
+    width: 64px;
+    height: 64px;
+    border-radius: 5px;
+}
 

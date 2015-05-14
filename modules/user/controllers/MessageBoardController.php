@@ -18,7 +18,7 @@ class MessageBoardController extends \yii\web\Controller
 
             if( Yii::$app->request->isPost )
                 if($_POST['content']!='') {
-                    Comments::loadForMB($_POST['user_id'], $_POST['content']);
+                    Comments::loadForMB($_POST['user_id'], $_POST['content'],0);
                 }
 
             //评论

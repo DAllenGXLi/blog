@@ -6,6 +6,7 @@ namespace app\modules\user\controllers;
 use app\models\Articles;
 use yii\data\Pagination;
 use Yii;
+use app\models\Comments;
 
 class ArticlesController extends \yii\web\Controller
 {
@@ -33,7 +34,24 @@ class ArticlesController extends \yii\web\Controller
     public function actionSpecific($id)
     {
         $model = Articles::findOne($id);
-        return $this->render('specific',['model'=>$model]);
+            //提交评论
+        if( Yii::$app->request->isPost )
+            if($_POST['content']!='') {
+                Comments::loadForMB($_POST['user_id'], $_POST['content'],$id);
+            }
+
+//        查找评论并分页
+        $query = Comments::find()->where(['article_id' => $id]);
+        $pages = new Pagination(['totalCount' => $query->count()]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        $pages->pageSize=ARTICLE_COMMENTS_PAGE_SIZE;
+        return $this->render('specific', [
+            'model'=>$model,
+            'models' => $models,
+            'pages' => $pages,
+        ]);
     }
 
     public function actionWrite()

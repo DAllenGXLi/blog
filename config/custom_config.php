@@ -10,10 +10,12 @@
 define('ARTICLE_PAGE_SIZE',10);
 //每页留言板数量
 define('MB_PAGE_SIZE',10);
+//文章评论每页条数
+define('ARTICLE_COMMENTS_PAGE_SIZE',10);
 //留言板的article id
 define('MB_ARTICLE_ID',0);
 //article 最少字数
-define('ARTICLE_MIN_NUM',800);
+define('ARTICLE_MIN_NUM',0);
 //article 预览中预览的文章字数
 define('ARTICLE_REVIEW_NUM',500);
 //定义yii web目录上一个目录（主目录）绝对路径

@@ -43,7 +43,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
             [['email'], 'string', 'max' => 40],
             [['password'], 'string', 'max' => 64],
             [['head_portrait', 'auto_key', 'access_token'], 'string', 'max' => 30],
-            [['username', 'email'], 'unique', 'targetAttribute' => ['username', 'email'], 'message' => 'The combination of Username and Email has already been taken.']
+            [['username', 'email'], 'unique', 'targetAttribute' => ['username', 'email'], 'message' => '对不起，该用户已存在']
         ];
     }
 
@@ -84,11 +84,11 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
 
             if( !$user )
             {
-                $this->addError($attribute, '没有找到该用户!');
+                $this->addError('username', '没有找到该用户!');
                 return false;
             }
             else if( !( Yii::$app->getSecurity()->validatePassword($this->password,$user->password)) ) {
-                $this->addError($attribute, '密码错误!');
+                $this->addError('password', '密码错误!');
                 return false;
             }
             else {
@@ -113,6 +113,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     public function register()
     {
         $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+        $this->auto_key = Yii::$app->getSecurity()->generateRandomString();
         if(!$this->validate())
             return false;
         $this->save();
@@ -158,7 +159,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->auth_key;
+        return $this->auto_key;
     }
 
     /**

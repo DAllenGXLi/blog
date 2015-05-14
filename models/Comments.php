@@ -53,11 +53,11 @@ class Comments extends \yii\db\ActiveRecord
     }
 
     //留言板
-    public static function loadForMB($user_id, $content)
+    public static function loadForMB($user_id, $content, $article_id)
     {
         date_default_timezone_set("Etc/GMT+8");
         $model = new Comments();
-        $model->article_id = 0;
+        $model->article_id = $article_id;
         $model->thumb_up = 0;
         $model->content = $content;
         $model->user_id = $user_id;
