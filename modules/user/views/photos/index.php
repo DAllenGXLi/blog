@@ -5,8 +5,8 @@
  * Date: 2015/5/4
  * Time: 21:12
  */
-$js_navigation = 'document.getElementById("navigation_type_3").setAttribute("class", "active") ';
-$this->registerJs($js_navigation, \yii\web\View::POS_READY);
+$js = 'document.getElementById("navigation_type_'.NAV_PHOTO_NUM.'").setAttribute("class", "active") ';
+$this->registerJs($js, \yii\web\View::POS_READY);
 ?>
 
 

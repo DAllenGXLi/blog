@@ -6,8 +6,8 @@ use yii\helpers\Html;
 use app\models\Users;
 
 
-$js_navigation = 'document.getElementById("navigation_type_4").setAttribute("class", "active") ';
-$this->registerJs($js_navigation, \yii\web\View::POS_READY);
+$js = 'document.getElementById("navigation_type_'.NAV_MB_NUM.'").setAttribute("class", "active") ';
+$this->registerJs($js, \yii\web\View::POS_READY);
 
 $i = 1;
 foreach ($models as $model) {

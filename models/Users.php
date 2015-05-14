@@ -37,7 +37,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'email', 'password', 'create_at', 'status'], 'required'],
-            [['create_at'], 'safe'],
+            [['create_at','rememberMe'], 'safe'],
             [['status'], 'integer'],
             [['username'], 'string', 'max' => 20],
             [['email'], 'string', 'max' => 40],
@@ -54,9 +54,9 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => '用户名',
             'email' => 'Email',
-            'password' => 'Password',
+            'password' => '密码',
             'create_at' => 'Create At',
             'head_portrait' => 'Head Portrait',
             'status' => 'Status',
@@ -71,7 +71,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     public function scenarios()
     {
         return [
-            'login'=>[ 'username', 'password'],
+            'login'=>[ 'username', 'password','rememberMe'],
             'register'=>['username', 'password','email'],
             'default'=>[],
         ];
@@ -82,30 +82,28 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
         if( !$this->hasErrors() ) {
             $user = Users::findOne(['username'=>$this->username]);
 
-            if( !$user || !($this->password === $user->password) ) {
-
-                $this->addError($attribute, 'Incorrect password or mail!');
+            if( !$user )
+            {
+                $this->addError($attribute, '没有找到该用户!');
                 return false;
             }
-
+            else if( !( Yii::$app->getSecurity()->validatePassword($this->password,$user->password)) ) {
+                $this->addError($attribute, '密码错误!');
+                return false;
+            }
+            else {
+                return true;
+            }
         }
         return true;
     }
 
     public function login()
     {
-        if( !$this->validate() || !$this->validatePassword('password',null) )
+        if( !$this->validate() || !$this->validatePassword('password',null) ) {
             return false;
+        }
         $user = Users::findOne( [ 'username'=>$this->username ] );
-        if( $user==null )
-        {
-            return false;
-        }
-        if( $user->password != $this->password )
-        {
-            return false;
-        }
-
         return Yii::$app->user->login($user, $this->rememberMe ? 3600*24*30 : 0);
     }
 
@@ -114,6 +112,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function register()
     {
+        $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
         if(!$this->validate())
             return false;
         $this->save();

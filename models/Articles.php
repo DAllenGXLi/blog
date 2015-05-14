@@ -39,6 +39,14 @@ class Articles extends \yii\db\ActiveRecord
         ];
     }
 
+    public function scenarios()
+    {
+        return [
+            'write'=>['content','user_id','title','create_at'],
+            'default'=>[]
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -59,12 +67,20 @@ class Articles extends \yii\db\ActiveRecord
     {
         date_default_timezone_set("Etc/GMT+8");
         $model = new Articles();
+        $model->setScenario('write');
         $model->user_id = $user_id;
         $model->content = $content;
         $model->title = $title;
         $model->create_at = date('Y-m-d H:i:s',time());
         $model->change_at = date('Y-m-d H:i:s',time());
-        $model->save();
+        if($model->validate())
+        {
+            if($model->save())
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

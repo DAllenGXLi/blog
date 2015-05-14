@@ -22,15 +22,6 @@ class MainController extends \yii\web\Controller
     public function actionMusic()
     {
         if (!\Yii::$app->user->isGuest) {
-
-            $model = new Users();
-            $model->email='11';
-            $model->username="11";
-            $model->password='11';
-            $model->head_portrait='11';
-            var_dump($model->save());
-
-
             return $this->render('music');
         }
         else{

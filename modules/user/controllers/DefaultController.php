@@ -20,6 +20,7 @@ class DefaultController extends Controller
 
         $model = new Users();
         $model->setScenario('login');
+        $model->load(Yii::$app->request->post());
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->redirect(['main/index']);
         } else {

@@ -42,8 +42,12 @@ class ArticlesController extends \yii\web\Controller
 
         if( Yii::$app->request->isPost )
         {
-            Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content']);
-            $this->redirect(['articles/index']);
+            if(Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'])) {
+                $this->redirect(['articles/index']);
+            }
+            else{
+                var_dump('false');
+            }
         }
 
         return $this->render('write');

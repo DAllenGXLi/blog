@@ -22,7 +22,7 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
 <!--                          用户信息-->
                         <a class=" dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             <span>
-                      <img src="<?=  DOCUMENT_ROOT ?>/res/img/head_portrait/000.jpg" height="42px"  />
+                      <img src="<?=  HEAD_PORTRAIT_ROOT ?>/000.jpg" height="42px"  />
                                 <?=Yii::$app->user->identity->username?></span>
 
                         </a>
@@ -32,7 +32,8 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 个人主页</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
                                     <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 我的动态</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="
+                            <?= Yii::$app->urlManager->createUrl(['user/setting/index']) ?>">
                                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 账户设置</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 我的收藏</a></li>
@@ -57,16 +58,18 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
 
             <!--    navigation-->
             <ul class="nav nav-pills nav nav-pills nav-justified head_navigation_2">
-                <li role="presentation" id="navigation_type_1"><a href="
-                <?= Yii::$app->urlManager->createUrl(["user/main/index"]) ?>">Home</a></li>
-                <li role="presentation" id="navigation_type_2"><a href="
-                <?= Yii::$app->urlManager->createUrl(["user/articles/index"]) ?>">Article</a></li>
-                <li role="presentation" id="navigation_type_3"><a href="
-                <?= Yii::$app->urlManager->createUrl(["user/photos/index"]) ?>">Photo</a></li>
-                <li role="presentation" id="navigation_type_4"><a href="
-                <?= Yii::$app->urlManager->createUrl(["user/message-board/index"]) ?>">MB</a></li>
-                <li role="presentation" id="navigation_type_5"><a href="
-                <?= Yii::$app->urlManager->createUrl(["user/contact/index"]) ?>">Contact</a></li>
+                <li role="presentation" id="navigation_type_<?= NAV_HOME_NUM ?>"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/main/index"]) ?>">主页</a></li>
+                <li role="presentation" id="navigation_type_<?= NAV_ARTICLE_NUM ?>"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/articles/index"]) ?>">文章</a></li>
+                <li role="presentation" id="navigation_type_<?= NAV_MUSIC_NUM ?>"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/music/index"]) ?>">音乐</a></li>
+                <li role="presentation" id="navigation_type_<?= NAV_PHOTO_NUM ?>"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/photos/index"]) ?>">照片</a></li>
+                <li role="presentation" id="navigation_type_<?= NAV_MB_NUM ?>"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/message-board/index"]) ?>">留言板</a></li>
+                <li role="presentation" id="navigation_type_<?= NAV_CONTACT_NUM ?>"><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/contact/index"]) ?>">联系我</a></li>
             </ul>
 
             <?= $content ?>

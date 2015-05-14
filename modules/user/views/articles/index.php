@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use app\models\Users;
 
 
-$js = 'document.getElementById("article_type_1").setAttribute("class", "active") ';
+$js = 'document.getElementById("navigation_type_'.NAV_ARTICLE_NUM.'").setAttribute("class", "active") ';
 $this->registerJs($js, \yii\web\View::POS_READY);
 
 
@@ -15,10 +15,6 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
 
 
 foreach ($models as $model) {
-// 在这里显示 $model
-    //获取文章作者
-    $user_id = $model->user_id;
-    $user = Users::findOne($user_id);
     ?>
 
 
@@ -34,7 +30,8 @@ foreach ($models as $model) {
 <!--        文章时间 作者-->
             <span class="comment-detail"
                   style="position: relative; bottom: 15px;"><span style="margin-right: 10px">
-                    <a><?=Html::encode($user->username) ?></a></span>
+
+                    <a><?=Html::encode( Users::findOne($model->user_id)->username ) ?></a></span>
                 <?= Html::encode($model->create_at) ?></span>
 
         </div>

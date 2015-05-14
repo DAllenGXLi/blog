@@ -6,8 +6,9 @@
  * Time: 20:54
  */
 use yii\helpers\Html;
-$js_navigation = 'document.getElementById("navigation_type_2").setAttribute("class", "active") ';
-$this->registerJs($js_navigation, \yii\web\View::POS_READY);
+use app\models\Users;
+$js = 'document.getElementById("navigation_type_'.NAV_ARTICLE_NUM.'").setAttribute("class", "active") ';
+$this->registerJs($js, \yii\web\View::POS_READY);
 ?>
 
 
@@ -23,7 +24,7 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
         <!--        文章时间 作者-->
             <span class="comment-detail"
                   style="position: relative; bottom: 15px;"><span style="margin-right: 10px">
-                    <a><?=Html::encode(Yii::$app->user->identity->username) ?></a></span>
+                    <a><?=Html::encode( Users::findOne($model->user_id)->username ) ?></a></span>
                 <?= Html::encode($model->create_at) ?></span>
     </div>
     <div class="panel-body">
