@@ -36,3 +36,8 @@ define('NAV_MUSIC_NUM',3);
 define('NAV_PHOTO_NUM',4);
 define('NAV_MB_NUM',5);
 define('NAV_CONTACT_NUM',6);
+
+//定义文章类型
+define('ARTICLE_TYPE_ALL', 0);
+//doudou博文
+define('ARTICLE_TYPE_DOUDOU',5);

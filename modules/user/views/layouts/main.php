@@ -51,7 +51,6 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
                 </div><!-- /.row -->
             </div>
         </div>
-    </div>
 
 
         <div class="container" style="padding-bottom: 100px; margin-top: 10px; margin-bottom: 20px; background-color: rgba(244, 244, 245, 0.89)" >
@@ -61,7 +60,7 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
                 <li role="presentation" id="navigation_type_<?= NAV_HOME_NUM ?>"><a href="
                 <?= Yii::$app->urlManager->createUrl(["user/main/index"]) ?>">主页</a></li>
                 <li role="presentation" id="navigation_type_<?= NAV_ARTICLE_NUM ?>"><a href="
-                <?= Yii::$app->urlManager->createUrl(["user/articles/index"]) ?>">文章</a></li>
+                <?= Yii::$app->urlManager->createUrl(["user/articles/index",'type'=>ARTICLE_TYPE_ALL]) ?>">文章</a></li>
                 <li role="presentation" id="navigation_type_<?= NAV_MUSIC_NUM ?>"><a href="
                 <?= Yii::$app->urlManager->createUrl(["user/music/index"]) ?>">音乐</a></li>
                 <li role="presentation" id="navigation_type_<?= NAV_PHOTO_NUM ?>"><a href="

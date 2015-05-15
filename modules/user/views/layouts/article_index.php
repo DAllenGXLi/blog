@@ -38,7 +38,8 @@ $this->beginContent('@app/modules/user/views/layouts/main.php'); ?>
                         <!--                        内导航-->
 
                         <ul class="nav nav-stacked">
-                            <li role="presentation"><a href="#">doudou</a></li>
+                            <li role="presentation"><a href="
+                            <?= Yii::$app->urlManager->createUrl(["user/articles/index",'type'=>ARTICLE_TYPE_DOUDOU]) ?>">doudou</a></li>
                         </ul>
 
                         <!--                        -->

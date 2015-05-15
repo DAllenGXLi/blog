@@ -49,7 +49,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <form name="comments"  method="post" >
-                <textarea autofocus="autofocus" name="content" rows="3" cols="37px" style="margin: 7px"></textarea>
+                <textarea autofocus="autofocus" class="form-control" rows="3" name="content"></textarea>
                 <input type="hidden" name="user_id" value="<?= Yii::$app->user->identity->id ?>">
                 <button type="submit" class="btn btn-primary" style="float: right">提交</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right;">取消</button>

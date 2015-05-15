@@ -13,11 +13,15 @@ class ArticlesController extends \yii\web\Controller
     public $enableCsrfValidation = false;
 
     public $layout = 'article_index';
-    public function actionIndex()
+    public function actionIndex($type)
     {
         if (!\Yii::$app->user->isGuest) {
             //page
-            $query = Articles::find()->orderBy(['change_at'=>SORT_DESC]);
+            if( $type == ARTICLE_TYPE_ALL )
+                $query = Articles::find()->orderBy(['change_at'=>SORT_DESC]);
+            else{
+                $query = Articles::find()->where(['type'=>$type])->orderBy(['change_at'=>SORT_DESC]);
+            }
             $pages = new Pagination(['totalCount'=>$query->count()]);
             $pages->pageSize = ARTICLE_PAGE_SIZE;
             $models = $query->offset($pages->offset)
@@ -57,11 +61,10 @@ class ArticlesController extends \yii\web\Controller
     public function actionWrite()
     {
         $this->layout = false;
-
         if( Yii::$app->request->isPost )
         {
-            if(Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'])) {
-                $this->redirect(['articles/index']);
+            if(Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'],$_POST['type'])) {
+                $this->redirect(['articles/index','type'=>$_POST['type']]);
             }
             else{
                 var_dump('false');

@@ -12,6 +12,7 @@ use Yii;
  * 		* @property integer $thumb_up
  * @property string $title
  * @property string $content
+ * @property string $type
  * @property string $create_at
  * @property string $change_at
  */
@@ -31,8 +32,8 @@ class Articles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'thumb_up', 'title', 'content', 'create_at', 'change_at'], 'required'],
-            [['user_id', 'thumb_up'], 'integer'],
+            [['user_id', 'thumb_up', 'title', 'content', 'create_at', 'change_at','type'], 'required'],
+            [['user_id', 'thumb_up','type'], 'integer'],
             [['create_at', 'change_at'], 'safe'],
             [['title'], 'string', 'max' => 100],
             [['content'], 'string', 'max' => 99999]
@@ -42,7 +43,7 @@ class Articles extends \yii\db\ActiveRecord
     public function scenarios()
     {
         return [
-            'write'=>['content','user_id','title','create_at'],
+            'write'=>['content','user_id','title','create_at','type'],
             'default'=>[]
         ];
     }
@@ -63,7 +64,7 @@ class Articles extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function loadForArticle($user_id, $title, $content)
+    public static function loadForArticle($user_id, $title, $content, $type)
     {
         date_default_timezone_set("Etc/GMT+8");
         $model = new Articles();
@@ -71,6 +72,7 @@ class Articles extends \yii\db\ActiveRecord
         $model->user_id = $user_id;
         $model->content = $content;
         $model->title = $title;
+        $model->type = $type;
         $model->create_at = date('Y-m-d H:i:s',time());
         $model->change_at = date('Y-m-d H:i:s',time());
         if($model->validate())
