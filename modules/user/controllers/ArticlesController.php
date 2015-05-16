@@ -7,12 +7,14 @@ use app\models\Articles;
 use yii\data\Pagination;
 use Yii;
 use app\models\Comments;
+use app\models\ThumbUp;
 
 class ArticlesController extends \yii\web\Controller
 {
     public $enableCsrfValidation = false;
 
     public $layout = 'article_index';
+
     public function actionIndex($type)
     {
         if (!\Yii::$app->user->isGuest) {
@@ -34,6 +36,7 @@ class ArticlesController extends \yii\web\Controller
         }
         return $this->redirect(['default/login']);
     }
+
 
     public function actionSpecific($id)
     {
@@ -57,6 +60,14 @@ class ArticlesController extends \yii\web\Controller
             'pages' => $pages,
         ]);
     }
+
+//    ajax调用
+    public function actionThumbUp($user_id, $article_id, $comment_id)
+    {
+        ThumbUp::click($user_id, $article_id, $comment_id);
+        return ThumbUp::find()->where(['article_id'=>$article_id])->count();
+    }
+
 
     public function actionWrite()
     {

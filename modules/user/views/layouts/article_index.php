@@ -24,11 +24,13 @@ $this->beginContent('@app/modules/user/views/layouts/main.php'); ?>
 <!--边侧菜单-->
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-<!--      doudou      -->
+
+            <!--      doudou      -->
+
             <div class="panel panel-success">
-                <div class="panel-heading" role="tab" id="headingTwo">
+                <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                        <a class="collapsed side_nav" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+                        <a  data-toggle="collapse"  data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             doudou博文
                         </a>
                     </h4>
@@ -36,22 +38,22 @@ $this->beginContent('@app/modules/user/views/layouts/main.php'); ?>
                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
                         <!--                        内导航-->
-
                         <ul class="nav nav-stacked">
                             <li role="presentation"><a href="
                             <?= Yii::$app->urlManager->createUrl(["user/articles/index",'type'=>ARTICLE_TYPE_DOUDOU]) ?>">doudou</a></li>
                         </ul>
-
                         <!--                        -->
                     </div>
                 </div>
             </div>
 
+
+
 <!--      技术      -->
             <div class="panel panel-warning">
                 <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
-                        <a class="collapsed side_nav" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <a  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             技术论坛
                         </a>
                     </h4>

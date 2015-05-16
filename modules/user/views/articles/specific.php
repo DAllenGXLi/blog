@@ -8,10 +8,39 @@
 use yii\helpers\Html;
 use app\models\Users;
 use yii\widgets\LinkPager;
+use app\models\ThumbUp;
 $js = 'document.getElementById("navigation_type_'.NAV_ARTICLE_NUM.'").setAttribute("class", "active") ';
 $this->registerJs($js, \yii\web\View::POS_READY);
 ?>
 
+<!--//ajax实现点赞功能-->
+<script>
+
+    function Ajax_ThumbUp()
+    {
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                document.getElementById("thumb_up_num").innerHTML=xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET","<?= Yii::$app->urlManager->createUrl(['user/articles/thumb-up','user_id'=>Yii::$app->user->identity->id,
+                'article_id'=>$model->id, 'comment_id'=>0 ]) ?>",true);
+        xmlhttp.send();
+    }
+
+</script>
 
 
 <div class="panel panel-info" style="margin-bottom: 40px">
@@ -35,9 +64,11 @@ $this->registerJs($js, \yii\web\View::POS_READY);
         <div>
             <a type="button" class="btn btn-sm btn-info comment-button" data-toggle="modal" data-target=".bs-example-modal-sm" >
                 <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 评论</a>
-            <a type="button" class="btn btn-sm btn-success comment-button">
+<!--            点赞-->
+            <a type="button" class="btn btn-sm btn-success comment-button"
+                onclick="Ajax_ThumbUp()">
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                <?= Html::encode($model->thumb_up) ?>
+                 <span id="thumb_up_num"><?= Html::encode(ThumbUp::find()->where(['article_id'=>$model->id])->count()) ?></span>
             </a>
         </div>
     </div>
