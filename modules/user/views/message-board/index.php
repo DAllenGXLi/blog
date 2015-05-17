@@ -9,7 +9,6 @@ use app\models\Users;
 $js = 'document.getElementById("navigation_type_'.NAV_MB_NUM.'").setAttribute("class", "active") ';
 $this->registerJs($js, \yii\web\View::POS_READY);
 
-$i = 1;
 foreach ($models as $model) {
 // 在这里显示 $model
     //获取文章作者
@@ -18,36 +17,24 @@ foreach ($models as $model) {
     ?>
 
 
-    <div class="panel panel-info" style="margin-bottom: 0px" xmlns="http://www.w3.org/1999/html">
-        <div class="panel-heading">
-            <!--            评论作者-->
-            <h2 class="panel-title"><b><?= Html::encode($user->username) ?></b></h2>
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object head_portrait_middle" src="<?= HEAD_PORTRAIT_ROOT ?>/<?= $user->head_portrait ?>" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading"><?= $user->username ?></h4>
+
             <!--        文章时间 作者-->
             <span class="comment-detail"
                   style="position: relative; bottom: 15px;">
                 <?= Html::encode($model->create_at) ?></span>
-<!--            <span class="comment-detail"-->
-<!--                style="position: relative; bottom: 15px; right: 20px">第--><?//= $i++ ?><!--楼</span>-->
 
-        </div>
-        <div class="panel-body" style="padding-bottom: 0px">
-            <span class="article">
-            <?=  $model->content ?>
-                </span>
-            <div>
-                <a type="button" class="btn btn-sm btn-info comment-button">
-                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 评论</a>
-                <a type="button" class="btn btn-sm btn-success comment-button">
-                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                    <?= Html::encode($model->thumb_up) ?>
-                </a>
-            </div>
+            <!--            评论内容-->
+            <?= $model->content ?>
         </div>
     </div>
-
-
-
-    <br/>
 
 
 <?php

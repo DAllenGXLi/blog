@@ -29,6 +29,9 @@ define('MUSIC_ROOT',DOCUMENT_ROOT.'/res/music');
 
 
 
+//个人页
+define('PERSONAL_ARTICLE_PAGE_SIZE', 10);
+
 //定义导航序列
 define('NAV_HOME_NUM',1);
 define('NAV_ARTICLE_NUM',2);

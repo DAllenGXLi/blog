@@ -28,7 +28,8 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
                         </a>
                           <!--                  下拉菜单    -->
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="
+                            <?= Yii::$app->urlManager->createUrl(['user/personal/index','id'=>Yii::$app->user->identity->id]) ?>">
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 个人主页</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
                                     <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 我的动态</a></li>

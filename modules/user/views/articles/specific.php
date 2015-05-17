@@ -60,8 +60,11 @@ $this->registerJs($js, \yii\web\View::POS_READY);
     <div class="panel-body">
          <span class="article">
         <?=  $model->content ?>
+             <br />
              </span>
         <div>
+            <span class="comment-detail" style="float: left; margin-right: 30px">发表于:<?= $model->create_at ?></span>
+            <span class="comment-detail" style="float: left">修改于:<?= $model->change_at ?></span>
             <a type="button" class="btn btn-sm btn-info comment-button" data-toggle="modal" data-target=".bs-example-modal-sm" >
                 <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 评论</a>
 <!--            点赞-->
