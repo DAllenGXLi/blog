@@ -28,25 +28,25 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
             <!-- Wrapper for slides -->
             <div   class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="<?=  DOCUMENT_ROOT ?>/modules/user/res/home/1.jpg" alt="...">
+                    <img src="<?=  IMAGE_ROOT ?>/home/1.jpg" alt="...">
                     <div class="carousel-caption">
                         picture 1
                     </div>
                 </div>
                 <div class="item">
-                    <img src="<?=  DOCUMENT_ROOT ?>/modules/user/res/home/2.jpg" alt="...">
+                    <img src="<?=  IMAGE_ROOT ?>/home/2.jpg" alt="...">
                     <div class="carousel-caption">
                         picture 2
                     </div>
                 </div>
                 <div class="item">
-                    <img src="<?=  DOCUMENT_ROOT ?>/modules/user/res/home/3.jpg" alt="...">
+                    <img src="<?=  IMAGE_ROOT ?>/home/3.jpg" alt="...">
                     <div class="carousel-caption">
                         picture 3
                     </div>
                 </div>
                 <div class="item">
-                    <img src="<?=  DOCUMENT_ROOT ?>/modules/user/res/home/4.jpg" alt="...">
+                    <img src="<?=  IMAGE_ROOT ?>/home/4.jpg" alt="...">
                     <div class="carousel-caption">
                         picture 4
                     </div>

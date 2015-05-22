@@ -20,7 +20,7 @@ define('ARTICLE_MIN_NUM',0);
 //article 预览中预览的文章字数
 define('ARTICLE_REVIEW_NUM',500);
 //定义yii web目录上一个目录（主目录）绝对路径
-define('DOCUMENT_ROOT', __DIR__.'/..' );
+define('DOCUMENT_ROOT', '' );
 //定义图片目录
 define('IMAGE_ROOT',DOCUMENT_ROOT.'/res/img');
 //自定于头像目录
