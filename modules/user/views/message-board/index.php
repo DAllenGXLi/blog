@@ -35,6 +35,7 @@ foreach ($models as $model) {
             <?= $model->content ?>
         </div>
     </div>
+    <hr>
 
 
 <?php

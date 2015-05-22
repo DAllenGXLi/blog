@@ -6,6 +6,7 @@
  * Time: 20:19
  */
 
+
 //每页文章数量
 define('ARTICLE_PAGE_SIZE',10);
 //每页留言板数量
@@ -19,7 +20,7 @@ define('ARTICLE_MIN_NUM',0);
 //article 预览中预览的文章字数
 define('ARTICLE_REVIEW_NUM',500);
 //定义yii web目录上一个目录（主目录）绝对路径
-define('DOCUMENT_ROOT', '/liguoxian');
+define('DOCUMENT_ROOT', __DIR__.'/..' );
 //定义图片目录
 define('IMAGE_ROOT',DOCUMENT_ROOT.'/res/img');
 //自定于头像目录
