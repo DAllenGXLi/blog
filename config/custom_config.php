@@ -51,3 +51,15 @@ define('NAV_CONTACT_NUM',6);
 define('ARTICLE_TYPE_ALL', 0);
 //doudou博文
 define('ARTICLE_TYPE_DOUDOU',5);
+
+//文章类型
+
+  return $article_info = [
+        ['theme_1',
+            ['title_1', 'title_2']
+        ],
+
+        ['theme_2',
+            ['title_1', 'title_2']
+        ]
+    ];
