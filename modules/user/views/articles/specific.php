@@ -34,7 +34,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
             {
                 document.getElementById("thumb_up_num").innerHTML=xmlhttp.responseText;
             }
-        }
+        };
         xmlhttp.open("GET","<?= Yii::$app->urlManager->createUrl(['user/articles/thumb-up','user_id'=>Yii::$app->user->identity->id,
                 'article_id'=>$model->id, 'comment_id'=>0 ]) ?>",true);
         xmlhttp.send();
