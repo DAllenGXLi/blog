@@ -14,7 +14,7 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
 
 
 <div class="row" style="margin-top: 10px; margin-bottom: 20px;">
-    <div class="col-md-9 col-md-offset-1">
+    <div class="col-lg-9 col-lg-offset-1">
 
         <div id="carousel-example-generic"  class="carousel slide" data-ride="carousel" style="margin-left: 80px">
             <!-- Indicators -->
@@ -57,7 +57,7 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
 
         <!---------------------------navigation2---------------------------->
         <div class="row">
-            <div class="col-md-10 col-md-offset-0">
+            <div class="col-lg-10 col-lg-offset-0">
                 <ul class="nav nav-tabs"  style="margin-top: 20px">
                     <li role="presentation" class="active"><a href="#"><b>Best Of The Week</b></a></li>
                     <li role="presentation"><a href="">
