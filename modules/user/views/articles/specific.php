@@ -64,8 +64,17 @@ $this->registerJs($js, \yii\web\View::POS_READY);
              </span>
         <div>
             <span class="comment-detail" style="float: left; margin-right: 30px">发表：<?= $model->create_at ?></span>
-            <span class="comment-detail" style="float: left; margin-right: 30px">修改：<?= $model->change_at ?></span>
-            <span class="comment-detail" style="float: left; margin-right: 30px">访问：<?= $model->visited_num ?></span>
+            <!--          置顶则不输出日期-->
+            <?php
+            if($model->change_at != KEEP_TOP_DATE)
+            {?>
+
+                <span class="comment-detail" style="float: left; margin-right: 30px">修改：<?= $model->change_at ?></span>
+
+            <?php
+            }
+            ?>
+            <span class="comment-detail" style="float: left; margin-right: 30px">浏览：<?= $model->visited_num ?></span>
 
             <a type="button" class="btn btn-sm btn-info comment-button" data-toggle="modal" data-target=".bs-example-modal-sm" >
                 <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 评论</a>

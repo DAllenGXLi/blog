@@ -17,6 +17,16 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
 foreach ($models as $model) {
     ?>
 
+<!--置顶-->
+<?php
+    if($model->change_at == KEEP_TOP_DATE)
+    {?>
+
+        <span class="label label-primary">置顶</span>
+
+    <?php
+    }
+    ?>
 
     <div class="panel panel-info">
         <div class="panel-heading">
@@ -32,9 +42,18 @@ foreach ($models as $model) {
             <span class="comment-detail"
                   style="position: relative; bottom: 15px;"><span style="margin-right: 10px">
                     作者：<a><?=Html::encode( Users::findOne($model->user_id)->username ) ?></a></span>
-                日期：<?= Html::encode($model->create_at) ?>
+<!--          置顶则不输出日期-->
+                <?php
+                if($model->change_at != KEEP_TOP_DATE)
+                 {?>
 
-                <span style="margin-left: 10px">访问：<?= $model->visited_num ?></span>
+                     日期：<?= Html::encode($model->create_at) ?>
+
+                <?php
+                }
+                ?>
+
+                <span style="margin-left: 10px">浏览：<?= $model->visited_num ?></span>
                 <span style="margin-left: 10px">点赞：<?= $model->thumb_up ?></span>
             </span>
         </div>

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
         <div class="col-md-offset-3 col-md-6">
             <?php $form = ActiveForm::begin(); ?>
 
-            <?= $form->field($model, 'username') ?>
+            <?= $form->field($model, '_username') ?>
             <?= $form->field($model, 'password') ?>
 
             <?= $form->field($model, 'rememberMe')->checkbox() ?>

@@ -52,7 +52,6 @@ class DefaultController extends Controller
         $model->setScenario('register');
         if( $model->load(Yii::$app->request->post()) && $model->register() )
         {
-            var_dump('aaa');
             return $this->redirect(['default/login']);
         }
         return $this->render('register',['model'=>$model]);

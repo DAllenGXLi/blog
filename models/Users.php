@@ -23,6 +23,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
 
     public $rememberMe;
     public $verifyCode;
+    public $_username;
     /**
      * @inheritdoc
      */
@@ -37,15 +38,25 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['verifyCode', 'captcha','message'=>'验证码错误'],
-            [['username', 'email', 'password', 'create_at', 'status'], 'required'],
+//            ['verifyCode', 'captcha','message'=>'验证码错误'],
+
+            ['username', 'string', 'max' => 20, 'min'=>3, 'tooLong'=>'用户名过长', 'tooShort'=>'用户名过短'],
+            ['username','required','message'=>'用户名不能为空'],
+            ['username', 'unique', 'targetAttribute' => ['username'], 'message' => '对不起，该用户已被注册'],
+            ['_username','required','message'=>'用户名不能为空'],
+//            ['username', 'match','pattern'=>'/^([a-zA-Z]|[\u4E00-\u9FA5]){1}([a-zA-Z0-9]|[\u4E00-\u9FA5]|[_]){2,30}$/', 'message'=>'用户名只能包含字母,汉字,数字以及下划线'],
+
+            ['password','required','message'=>'密码不能为空'],
+            ['password', 'string', 'min' => 6, 'tooShort'=>'密码过短' ],
+//            ['password','match', 'pattern'=>'/^\w+$/','message'=>'密码含有无效字符'],
+
+            ['email', 'unique', 'targetAttribute' => ['email'], 'message' => '对不起，该邮箱已被注册'],
+            ['email','required','message'=>'邮箱不能为空'],
+            [['email'], 'email', 'message'=>'邮箱格式错误'],
+
+            [['head_portrait', 'auto_key', 'access_token'], 'string', 'max' => 30],
             [['create_at','rememberMe'], 'safe'],
             [['status'], 'integer'],
-            [['username'], 'string', 'max' => 20],
-            [['email'], 'string', 'max' => 40],
-            [['password'], 'string', 'max' => 64],
-            [['head_portrait', 'auto_key', 'access_token'], 'string', 'max' => 30],
-            [['username', 'email'], 'unique', 'targetAttribute' => ['username', 'email'], 'message' => '对不起，该用户已存在']
         ];
     }
 
@@ -55,9 +66,10 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'verifyCode'=>'Verification Code',
+            'verifyCode'=>'验证码',
             'id' => 'ID',
             'username' => '用户名',
+            '_username' => '用户名',
             'email' => 'Email',
             'password' => '密码',
             'create_at' => 'Create At',
@@ -74,9 +86,9 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     public function scenarios()
     {
         return [
-            'login'=>[ 'username', 'password','rememberMe'],
-            'register'=>['username', 'password','email','verifyCode'],
-//            'register'=>['username', 'password','email'],
+            'login'=>[ '_username', 'password','rememberMe'],
+//            'register'=>['username', 'password','email','verifyCode'],
+            'register'=>['username', 'password','email'],
             'default'=>[],
         ];
     }
@@ -84,7 +96,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     public function validatePassword($attribute, $params)
     {
         if( !$this->hasErrors() ) {
-            $user = Users::findOne(['username'=>$this->username]);
+            $user = Users::findOne(['username'=>$this->_username]);
 
             if( !$user )
             {
@@ -107,7 +119,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
         if( !$this->validate() || !$this->validatePassword('password',null) ) {
             return false;
         }
-        $user = Users::findOne( [ 'username'=>$this->username ] );
+        $user = Users::findOne( [ 'username'=>$this->_username ] );
         return Yii::$app->user->login($user, $this->rememberMe ? 3600*24*30 : 0);
     }
 
@@ -116,12 +128,25 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function register()
     {
-        $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
-        $this->auto_key = Yii::$app->getSecurity()->generateRandomString();
         if(!$this->validate())
             return false;
-        $this->save();
-        return true;
+        $this->auto_key = Yii::$app->getSecurity()->generateRandomString();
+        if($this->save())
+        {
+            $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+            if($this->save()){
+                echo '<script>alert("注册成功")</script>';
+            }
+            else{
+                echo '<script>alert("注册失败")</script>';
+                return false;
+            }
+            return true;
+        }
+        else{
+            echo '<script>alert("注册失败")</script>';
+            return false;
+        }
     }
 
 
