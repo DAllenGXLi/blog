@@ -22,7 +22,7 @@ foreach ($models as $model) {
     if($model->change_at == KEEP_TOP_DATE)
     {?>
 
-        <span class="label label-primary">置顶</span>
+        <span class="label label-success">置顶</span>
 
     <?php
     }

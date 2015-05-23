@@ -3,15 +3,19 @@
 namespace app\modules\user\controllers;
 use app\models\User;
 use app\models\Users;
-
+use app\models\Articles;
 class MainController extends \yii\web\Controller
 {
     public $layout = 'first';
 
+    //article
     public function actionIndex()
     {
         if (!\Yii::$app->user->isGuest) {
-            return $this->render('index');
+//            $models = Articles::find()->where('id > 0')->orderBy(['thumb_up'=>SORT_DESC])->;
+        $models = Articles::findBySql('SELECT * FROM articles ORDER BY thumb_up DESC LIMIT 5')->all();
+
+            return $this->render('index',['models'=>$models]);
         }
         else{
             return $this->redirect(['default/login']);
@@ -33,6 +37,16 @@ class MainController extends \yii\web\Controller
     {
         if (!\Yii::$app->user->isGuest) {
             return $this->render('film');
+        }
+        else{
+            return $this->redirect(['default/login']);
+        }
+    }
+
+    public function actionComment()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            return $this->render('comment');
         }
         else{
             return $this->redirect(['default/login']);

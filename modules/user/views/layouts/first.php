@@ -59,18 +59,20 @@ $this->registerJs($js_navigation, \yii\web\View::POS_READY);
         <div class="row">
             <div class="col-lg-10 col-lg-offset-0">
                 <ul class="nav nav-tabs"  style="margin-top: 20px">
-                    <li role="presentation" class="active"><a href="#"><b>Best Of The Week</b></a></li>
-                    <li role="presentation"><a href="">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Article</a></li>
-                    <li role="presentation">
+                    <li role="presentation" class="active"><a href="#" style="background-color: #c6c6c6"><b>Best Of The Week</b></a></li>
+                    <li role="presentation" id="main_article_nav"><a href="
+                    <?= Yii::$app->urlManager->createUrl(['user/main/index']) ?>">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 文章</a></li>
+                    <li role="presentation" id="main_music_nav">
                         <a href="<?= Yii::$app->urlManager->createUrl(['user/main/music']) ?>">
-                            <span class="glyphicon glyphicon-music" aria-hidden="true"></span> Music</a></li>
-                    <li role="presentation"><a href="<?= Yii::$app->urlManager->createUrl(['user/main/film']) ?>">
-                            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Film</a></li>
-                    <li role="presentation"><a href="">
-                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Picture</a></li>
-                    <li role="presentation"><a href="">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> comment</a></li>
+                            <span class="glyphicon glyphicon-music" aria-hidden="true"></span> 音乐</a></li>
+<!--                    <li role="presentation"><a href="">-->
+<!--                            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Film</a></li>-->
+<!--                    <li role="presentation"><a href="">-->
+<!--                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Picture</a></li>-->
+                    <li role="presentation" id="main_comment_nav"><a href="
+                    <?= Yii::$app->urlManager->createUrl(['user/main/comment']) ?>">
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 神评论</a></li>
             </div>
         </div>
 

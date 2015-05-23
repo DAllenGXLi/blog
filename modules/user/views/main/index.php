@@ -1,55 +1,73 @@
 
+<?php
+use app\models\Users;
+use yii\helpers\Html;
 
+$js_navigation = 'document.getElementById("main_article_nav").setAttribute("class", "active") ';
+$this->registerJs($js_navigation, \yii\web\View::POS_READY);
 
-
+foreach ($models as $model) {
+    ?>
 
 <div class="row">
     <div class="col-md-offset-1 col-md-10">
 
-        <!--        a song-->
-        <div class="well well-lg">
 
-            <!--                detail-->
-            <span class="label label-info">see you agin</span>
-            <div class="alert alert-info" role="alert">
-                <span class="alert-link">
-                    《See You Again》是由美国著名说唱歌手Wiz Khalifa和新人Charlie Puth共同献声的一首歌曲。这首歌收录于电影《速度与激情7》的原声带中，也是电影的片尾曲兼主题曲。这首歌是为了缅怀因车祸逝世的演员Paul Walker而创作的。
-                </span>
-            </div>
-            <!--            audio-->
-            <audio class="audio" src="<?= MUSIC_ROOT ?>/seeYouAgain.mp3" controls="controls">
-                Your browser does not support the audio element.
-            </audio>
-            <!--            button-->
-            <button type="button" class="btn btn-danger comment-button">more</button>
-            <button type="button" class="btn btn-default comment-button">comment</button>
-            <button type="button" class="btn btn-default comment-button">collect</button>
+    <!--置顶-->
+    <?php
+    if ($model->change_at == KEEP_TOP_DATE) {
+        ?>
+
+        <span class="label label-success">置顶</span>
+
+    <?php
+    }
+    ?>
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <!--            头像-->
+            <span style="float: left; position: relative; bottom: 8px">
+            <img src="<?= HEAD_PORTRAIT_ROOT ?>/<?= Users::findOne($model->user_id)->head_portrait ?>"
+                 height="32px"/></span>
+            <!--            文章标题-->
+            <a href="
+            <?= Yii::$app->urlManager->createUrl(['user/articles/specific', 'id' => $model->id]) ?>
+            "><h2 class="panel-title"><b>
+                        <?= Html::encode(substr($model->title, 0, ARTICLE_TITLE_REVIEW_NUM)) ?></b></h2></a>
+            <!--        文章时间 作者-->
+            <span class="comment-detail"
+                  style="position: relative; bottom: 15px;"><span style="margin-right: 10px">
+                    作者：<a><?= Html::encode(Users::findOne($model->user_id)->username) ?></a></span>
+<!--          置顶则不输出日期-->
+                <?php
+                if ($model->change_at != KEEP_TOP_DATE) {
+                    ?>
+
+                    日期：<?= Html::encode($model->create_at) ?>
+
+                <?php
+                }
+                ?>
+
+                <span style="margin-left: 10px">浏览：<?= $model->visited_num ?></span>
+                <span style="margin-left: 10px">点赞：<?= $model->thumb_up ?></span>
+            </span>
         </div>
-
-
-
-
-        <!--        a song-->
-        <div class="well well-lg">
-
-            <!--                detail-->
-            <span class="label label-info">highter</span>
-            <div class="alert alert-info" role="alert">
-                <span class="alert-link">
-                    Erik Gronwall， 来自瑞典的创作型歌手，2009年Swedish Idiol（瑞典偶像）的冠军得主，强劲的爆发力让Erik散发无限魅力，他的单曲《higher》更成为他的代表作
+        <div class="panel-body">
+            <span class="article">
+            <?= substr($model->content, 0, ARTICLE_REVIEW_NUM) . ' ...' ?>
                 </span>
-            </div>
-            <!--            audio-->
-            <audio class="audio" src="<?= MUSIC_ROOT ?>/higher.mp3" controls="controls">
-                Your browser does not support the audio element.
-            </audio>
-            <!--            button-->
-            <button type="button" class="btn btn-danger comment-button">more</button>
-            <button type="button" class="btn btn-default comment-button">comment</button>
-            <button type="button" class="btn btn-default comment-button">collect</button>
+
         </div>
-
-
+    </div>
 
     </div>
 </div>
+
+<?php
+    }
+    ?>
+
+

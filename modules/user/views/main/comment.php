@@ -5,6 +5,10 @@
  * Date: 2015/4/25
  * Time: 18:44
  */
+
+$js_navigation = 'document.getElementById("main_comment_nav").setAttribute("class", "active") ';
+$this->registerJs($js_navigation, \yii\web\View::POS_READY);
+
 ?>
 <div class="col-md-9 col-md-offset-1">
 
