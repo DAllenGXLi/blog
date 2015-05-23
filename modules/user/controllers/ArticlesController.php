@@ -20,9 +20,9 @@ class ArticlesController extends \yii\web\Controller
         if (!\Yii::$app->user->isGuest) {
             //page
             if( $type == ARTICLE_TYPE_ALL )
-                $query = Articles::find()->orderBy(['change_at'=>SORT_DESC]);
+                $query = Articles::find()->where('id > 0')->orderBy(['change_at'=>SORT_DESC]);
             else{
-                $query = Articles::find()->where(['type'=>$type])->orderBy(['change_at'=>SORT_DESC]);
+                $query = Articles::find()->where("type = $type and id > 0")->orderBy(['change_at'=>SORT_DESC]);
             }
             $pages = new Pagination(['totalCount'=>$query->count()]);
             $pages->pageSize = ARTICLE_PAGE_SIZE;
@@ -41,6 +41,8 @@ class ArticlesController extends \yii\web\Controller
     public function actionSpecific($id)
     {
         $model = Articles::findOne($id);
+        $model->visited_num++;
+        $model->save();
             //提交评论
         if( Yii::$app->request->isPost )
             if($_POST['content']!='') {
@@ -65,7 +67,10 @@ class ArticlesController extends \yii\web\Controller
     public function actionThumbUp($user_id, $article_id, $comment_id)
     {
         ThumbUp::click($user_id, $article_id, $comment_id);
-        return ThumbUp::find()->where(['article_id'=>$article_id])->count();
+        $model = Articles::findOne($article_id);
+        $model->thumb_up = ThumbUp::find()->where(['article_id'=>$article_id])->count();
+        $model->save();
+        return $model->thumb_up;
     }
 
 

@@ -18,6 +18,10 @@ use yii\captcha\Captcha;
             <?= $form->field($model, 'password') ?>
             <?= $form->field($model, 'email') ?>
 
+            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+            ]) ?>
+
 
 
             <div class="form-group">
@@ -26,11 +30,9 @@ use yii\captcha\Captcha;
                 <a type="button" class="btn btn-success" style="margin-left: 10px" href="
                 <?= Yii::$app->urlManager->createUrl(['user/default/login']) ?>">登陆</a>
             </div>
+
             <?php ActiveForm::end(); ?>
 
-<!--            --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-//                'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-//            ]) ?>
 
 
         </div>

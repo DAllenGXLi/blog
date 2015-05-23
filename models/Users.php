@@ -22,7 +22,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
 {
 
     public $rememberMe;
-//    public $verifyCode;
+    public $verifyCode;
     /**
      * @inheritdoc
      */
@@ -37,7 +37,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-//            ['verifyCode', 'captcha'],
+            ['verifyCode', 'captcha','message'=>'验证码错误'],
             [['username', 'email', 'password', 'create_at', 'status'], 'required'],
             [['create_at','rememberMe'], 'safe'],
             [['status'], 'integer'],
@@ -75,8 +75,8 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'login'=>[ 'username', 'password','rememberMe'],
-//            'register'=>['username', 'password','email','verifyCode'],
-            'register'=>['username', 'password','email'],
+            'register'=>['username', 'password','email','verifyCode'],
+//            'register'=>['username', 'password','email'],
             'default'=>[],
         ];
     }

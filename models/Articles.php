@@ -15,6 +15,7 @@ use Yii;
  * @property string $type
  * @property string $create_at
  * @property string $change_at
+ *  * @property string $visited_num
  */
 class Articles extends \yii\db\ActiveRecord
 {
@@ -35,7 +36,7 @@ class Articles extends \yii\db\ActiveRecord
             [['user_id', 'thumb_up', 'title', 'content', 'create_at', 'change_at','type'], 'required'],
             [['user_id', 'thumb_up','type'], 'integer'],
             [['create_at', 'change_at'], 'safe'],
-            [['title'], 'string', 'max' => 100],
+            [['title'], 'string', 'max' => 60],
             [['content'], 'string', 'max' => 99999]
         ];
     }

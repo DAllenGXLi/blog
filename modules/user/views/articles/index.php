@@ -26,22 +26,26 @@ foreach ($models as $model) {
             <!--            文章标题-->
             <a href="
             <?= Yii::$app->urlManager->createUrl(['user/articles/specific','id'=>$model->id]) ?>
-            "><h2 class="panel-title"><b><?= Html::encode($model->title) ?></b></h2></a>
+            "><h2 class="panel-title"><b>
+                      <?= Html::encode(substr($model->title,0,ARTICLE_TITLE_REVIEW_NUM)) ?></b></h2></a>
 <!--        文章时间 作者-->
             <span class="comment-detail"
                   style="position: relative; bottom: 15px;"><span style="margin-right: 10px">
+                    作者：<a><?=Html::encode( Users::findOne($model->user_id)->username ) ?></a></span>
+                日期：<?= Html::encode($model->create_at) ?>
 
-                    <a><?=Html::encode( Users::findOne($model->user_id)->username ) ?></a></span>
-                <?= Html::encode($model->create_at) ?></span>
-
+                <span style="margin-left: 10px">访问：<?= $model->visited_num ?></span>
+                <span style="margin-left: 10px">点赞：<?= $model->thumb_up ?></span>
+            </span>
         </div>
         <div class="panel-body">
             <span class="article">
             <?=  substr($model->content,0,ARTICLE_REVIEW_NUM).' ...' ?>
                 </span>
-            <a type="button" class=""></a>
+
         </div>
     </div>
+
 
 
 

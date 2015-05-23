@@ -19,6 +19,10 @@ define('MB_ARTICLE_ID',0);
 define('ARTICLE_MIN_NUM',0);
 //article 预览中预览的文章字数
 define('ARTICLE_REVIEW_NUM',500);
+//article 预览中预览的文章title字节数
+define('ARTICLE_TITLE_REVIEW_NUM',60);
+//article 最大的文章title字数
+define('ARTICLE_TITLE_MAX_NUM',25);
 //定义yii web目录上一个目录（主目录）绝对路径
 define('DOCUMENT_ROOT', '' );
 //定义图片目录

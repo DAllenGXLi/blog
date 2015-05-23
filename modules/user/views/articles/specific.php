@@ -63,13 +63,15 @@ $this->registerJs($js, \yii\web\View::POS_READY);
              <br />
              </span>
         <div>
-            <span class="comment-detail" style="float: left; margin-right: 30px">发表于:<?= $model->create_at ?></span>
-            <span class="comment-detail" style="float: left">修改于:<?= $model->change_at ?></span>
+            <span class="comment-detail" style="float: left; margin-right: 30px">发表：<?= $model->create_at ?></span>
+            <span class="comment-detail" style="float: left; margin-right: 30px">修改：<?= $model->change_at ?></span>
+            <span class="comment-detail" style="float: left; margin-right: 30px">访问：<?= $model->visited_num ?></span>
+
             <a type="button" class="btn btn-sm btn-info comment-button" data-toggle="modal" data-target=".bs-example-modal-sm" >
                 <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 评论</a>
+
 <!--            点赞-->
-            <a type="button" class="btn btn-sm btn-success comment-button"
-                onclick="Ajax_ThumbUp()">
+            <a type="button" class="btn btn-sm btn-success comment-button" onclick="Ajax_ThumbUp()">
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                  <span id="thumb_up_num"><?= Html::encode(ThumbUp::find()->where(['article_id'=>$model->id])->count()) ?></span>
             </a>
@@ -112,7 +114,8 @@ foreach ($models as $_model) {
             <!--        文章时间 作者-->
             <span class="comment-detail"
                   style="position: relative; bottom: 15px;">
-                <?= Html::encode($model->create_at) ?></span>
+                <?= Html::encode($model->create_at) ?>
+            </span>
 
 <!--            评论内容-->
             <?= $_model->content ?>

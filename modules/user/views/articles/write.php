@@ -146,6 +146,11 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
             //标题
             var title = document.createElement('input');
             title.value = document.getElementById('article_title').value ;
+            if (title.value.length > <?= ARTICLE_TITLE_MAX_NUM ?>)
+            {
+                alert('标题太长啦，改短一点吧');
+                return;
+            }
             title.name = 'title';
             title.type = 'hidden';
 
