@@ -36,7 +36,7 @@ foreach ($models as $model) {
                 <?= Html::encode($model->create_at) ?></span>
 
             <!--            评论内容-->
-            <?= $model->content ?>
+            <?= Html::encode($model->content)  ?>
         </div>
     </div>
     <hr>
