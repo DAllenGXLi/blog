@@ -15,14 +15,14 @@ class ArticlesController extends \yii\web\Controller
 
     public $layout = 'article_index';
 
-    public function actionIndex($type)
+    public function actionIndex($class)
     {
         if (!\Yii::$app->user->isGuest) {
             //page
-            if( $type == ARTICLE_TYPE_ALL )
+            if( $class == 'ALL' || $class == 'all' )
                 $query = Articles::find()->where('id > 0')->orderBy(['change_at'=>SORT_DESC]);
             else{
-                $query = Articles::find()->where("type = $type and id > 0")->orderBy(['change_at'=>SORT_DESC]);
+                $query = Articles::find()->where("class='$class' and id>0")->orderBy(['change_at'=>SORT_DESC]);
             }
             $pages = new Pagination(['totalCount'=>$query->count()]);
             $pages->pageSize = ARTICLE_PAGE_SIZE;
@@ -79,14 +79,13 @@ class ArticlesController extends \yii\web\Controller
         $this->layout = false;
         if( Yii::$app->request->isPost )
         {
-            if(Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'],$_POST['type'])) {
-                $this->redirect(['articles/index','type'=>$_POST['type']]);
+            if(Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'],$_POST['class'])) {
+                $this->redirect(['articles/index','class'=>$_POST['class']]);
             }
             else{
                 var_dump('false');
             }
         }
-
         return $this->render('write');
     }
 

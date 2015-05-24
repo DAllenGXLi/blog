@@ -15,6 +15,7 @@ use yii\web\IdentityInterface;
  * @property string $password
  * @property string $create_at
  * @property integer $status
+ *  * @property integer $class
  * @property string $auto_key
  * @property string $access_token
  */

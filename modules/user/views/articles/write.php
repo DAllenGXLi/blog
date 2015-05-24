@@ -2,6 +2,8 @@
 //引入全局样式，js文件等，设定背景颜色，框架,此page不使用layout
 use yii\helpers\Html;
 
+require_once(__DIR__.'/../../../../config/article_info.php');
+
 
 $this->registerCssFile('css/bootstrap.min.css');
 $this->registerJsFile('js/jquery-1.11.2.min.js',['position'=>\yii\web\View::POS_HEAD]);
@@ -87,7 +89,7 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
         <li role="presentation" id="navigation_type_<?= NAV_HOME_NUM ?>"><a href="
                 <?= Yii::$app->urlManager->createUrl(["user/main/index"]) ?>">主页</a></li>
         <li role="presentation" id="navigation_type_<?= NAV_ARTICLE_NUM ?>"><a href="
-                <?= Yii::$app->urlManager->createUrl(["user/articles/index",'type'=>ARTICLE_TYPE_ALL]) ?>">文章</a></li>
+                <?= Yii::$app->urlManager->createUrl(["user/articles/index",'class'=>'all']) ?>">文章</a></li>
         <li role="presentation" id="navigation_type_<?= NAV_MUSIC_NUM ?>"><a href="
                 <?= Yii::$app->urlManager->createUrl(["user/music/index"]) ?>">音乐</a></li>
         <li role="presentation" id="navigation_type_<?= NAV_PHOTO_NUM ?>"><a href="
@@ -99,16 +101,17 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
     </ul>
 
     <!--    文章种类-->
-    <select id="article_type" style="float:right; height: 33px; width: 120px " name="cars">
-        <optgroup label="Swedish Cars">
-            <option selected="selected" value="<?= ARTICLE_TYPE_DOUDOU ?>">doudou博文</option>
-            <option value="1">Volvo</option>
-            <option value="2">Saab</option>
-        </optgroup>
-        <optgroup label="German Cars">
-            <option value="3">Mercedes</option>
-            <option value="4">Audi</option>
-        </optgroup>
+    <select id="article_class" style="float:right; height: 33px; width: 120px " name="article_class">
+    <?php
+        foreach( $_ARTICLE_INFO as $articles )
+        {?>
+            <optgroup label="<?= $articles[0] ?>">
+        <?php
+                foreach($articles[1] as $article) ?>
+                    <option value="<?= $article ?>"><?= $article ?></option>
+            </optgroup>
+        <?php
+        }?>
     </select>
 
 
@@ -161,16 +164,17 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
             user_id.type = 'hidden';
 
             //type
-            var type = document.createElement('input');
-            type.value = document.getElementById('article_type').value ;
-            type.name = 'type';
-            type.type = 'hidden';
+            var _class = document.createElement('input');
+            _class.value = document.getElementById('article_class').value ;
+            alert(_class.value);
+            _class.name = 'class';
+            _class.type = 'hidden';
 
             //标题
             form.appendChild(content);
             form.appendChild(title);
             form.appendChild(user_id);
-            form.appendChild(type);
+            form.appendChild(_class);
 
             if(title.value=='' && content.value=='') {
                 alert('标题或者内容不能为空!');

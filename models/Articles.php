@@ -65,7 +65,7 @@ class Articles extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function loadForArticle($user_id, $title, $content, $type)
+    public static function loadForArticle($user_id, $title, $content, $class)
     {
         date_default_timezone_set("Etc/GMT+8");
         $model = new Articles();
@@ -73,7 +73,8 @@ class Articles extends \yii\db\ActiveRecord
         $model->user_id = $user_id;
         $model->content = $content;
         $model->title = $title;
-        $model->type = $type;
+        $model->class = $class;
+        $model->type = 10;
         $model->create_at = date('Y-m-d H:i:s',time());
         $model->change_at = date('Y-m-d H:i:s',time());
         if($model->validate())

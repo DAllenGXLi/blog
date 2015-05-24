@@ -23,7 +23,7 @@ class DefaultController extends Controller
     public function actionLogin()
     {
 
-
+//        $this->layout = 'basic';
         if (!\Yii::$app->user->isGuest) {
             return $this->redirect(['main/index']);
         }
@@ -48,6 +48,7 @@ class DefaultController extends Controller
 
     public function actionRegister()
     {
+//        $this->layout = 'basic';
         $model = new Users();
         $model->setScenario('register');
         if( $model->load(Yii::$app->request->post()) && $model->register() )
