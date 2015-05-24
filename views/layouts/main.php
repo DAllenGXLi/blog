@@ -1,69 +1,84 @@
 <?php
+//引入全局样式，js文件等，设定背景颜色，框架
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
 
-/* @var $this \yii\web\View */
-/* @var $content string */
 
-AppAsset::register($this);
+$this->registerCssFile('css/bootstrap.min.css');
+$this->registerJsFile('js/jquery-1.11.2.min.js',['position'=>\yii\web\View::POS_HEAD]);
+$this->registerJsFile('js/bootstrap.min.js',['position'=>\yii\web\View::POS_HEAD]);
+$this->registerCssFile('css/main.css');
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="en">
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
 
+<body style="background-color: rgba(228, 228, 229, 0.89); ">
 <?php $this->beginBody() ?>
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['user/default/login']] :
-                ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']],
-        ],
-    ]);
-    NavBar::end();
-    ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
+
+<div id="div_main">
+
+
+    <!--   top-->
+    <div class="nav_head">
+        <div class="container" style="color: #e3e3e3; font-weight: bolder; font-size: 35px">
+
+            <div class="row">
+                <span>doudou's home</span>
+
+                <!--                    如果已登陆，显示用户信息-->
+                <?php
+                if( !Yii::$app->user->identity==null ) {
+                ?>
+
+                <span class="dropdown nav_user" style="float: right">
+<!--                          用户信息-->
+                        <a class=" dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            <span>
+                      <img src="<?=  HEAD_PORTRAIT_ROOT ?>/000.jpg" height="42px"  />
+                                <?=Yii::$app->user->identity->username?></span>
+
+                        </a>
+                          <!--                  下拉菜单    -->
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="
+                            <?= Yii::$app->urlManager->createUrl(['user/personal/index','id'=>Yii::$app->user->identity->id]) ?>">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 个人主页</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 我的动态</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="
+                            <?= Yii::$app->urlManager->createUrl(['user/setting/index']) ?>">
+                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 账户设置</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 我的收藏</a></li>
+                            <li role="presentation" class="divider" style="background-color: rgba(93, 93, 94, 0.89)"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="
+                            <?= Yii::$app->urlManager->createUrl(['user/default/logout']) ?>">
+                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出登录</a></li>
+                        </ul>
+            </div>
+
+            <?php } ?>
+
+
+
+        </div><!-- /.row -->
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+
+<?= $content ?>
+
 
 <?php $this->endBody() ?>
 </body>
+
 </html>
+
 <?php $this->endPage() ?>
+

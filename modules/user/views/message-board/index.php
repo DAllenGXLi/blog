@@ -8,7 +8,11 @@ use app\models\Users;
 
 $js = 'document.getElementById("navigation_type_'.NAV_MB_NUM.'").setAttribute("class", "active") ';
 $this->registerJs($js, \yii\web\View::POS_READY);
+?>
 
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+<?php
 foreach ($models as $model) {
 // 在这里显示 $model
     //获取文章作者
@@ -41,7 +45,8 @@ foreach ($models as $model) {
 <?php
 }
 ?>
-
+    </div>
+</div>
 
 
 
@@ -50,6 +55,16 @@ foreach ($models as $model) {
 <div class="row">
 <div style="margin-bottom: 20px" class="col-md-offset-5 col-md-2">
 <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target=".bs-example-modal-sm">我来说两句</button>
+
+    <div style="margin-top: 15px">
+    <?php
+    // 显示分页
+    echo LinkPager::widget([
+        'pagination' => $pages,
+    ]);
+    ?>
+    </div>
+
 </div>
 </div>
 
@@ -67,12 +82,4 @@ foreach ($models as $model) {
 </div>
 
 
-<div class="row" style="margin-left: 10px">
-<?php
-// 显示分页
-echo LinkPager::widget([
-    'pagination' => $pages,
-]);
 
-?>
-</div>

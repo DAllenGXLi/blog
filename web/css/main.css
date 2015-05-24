@@ -1,10 +1,33 @@
 #div_main {
-    background-color: snow;
+    /*background-color: snow;*/
+    /*background-color: #c6c6c6;*/
+}
+
+.main_body {
+    padding-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    background-color: rgba(244, 244, 245, 0.6)
+}
+
+.page_tail {
+    margin-top: 20px;
+    padding: 40px;
+    background-color: rgba(165, 165, 166, 0.5);
+}
+
+.page_tail a {
+    color: #666666;
 }
 
 .nav_head {
     background-color: #3c3c3c;
     height: 50px;
+}
+
+.default-login {
+    margin-top: 40px;
+    padding-bottom: 30px;
 }
 
 .comment-title {
