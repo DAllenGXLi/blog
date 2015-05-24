@@ -13,7 +13,7 @@ class MainController extends \yii\web\Controller
     {
         if (!\Yii::$app->user->isGuest) {
 //            $models = Articles::find()->where('id > 0')->orderBy(['thumb_up'=>SORT_DESC])->;
-        $models = Articles::findBySql('SELECT * FROM articles ORDER BY thumb_up DESC LIMIT 5')->all();
+        $models = Articles::findBySql('SELECT * FROM articles WHERE id>0 ORDER BY thumb_up DESC LIMIT 5')->all();
 
             return $this->render('index',['models'=>$models]);
         }
