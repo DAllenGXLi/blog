@@ -83,7 +83,9 @@ class ArticlesController extends \yii\web\Controller
                 $this->redirect(['articles/index','class'=>$_POST['class']]);
             }
             else{
-                var_dump('false');
+                echo '提交失败';
+                return false;
+//                var_dump('false');
             }
         }
         return $this->render('write');

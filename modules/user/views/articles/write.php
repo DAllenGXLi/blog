@@ -119,7 +119,6 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
             //type
             var _class = document.createElement('input');
             _class.value = document.getElementById('article_class').value ;
-            alert(_class.value);
             _class.name = 'class';
             _class.type = 'hidden';
 
