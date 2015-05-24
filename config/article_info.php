@@ -25,5 +25,9 @@ return $_ARTICLE_INFO = [
         ['cocos2d-x', 'cocos2d-js']
     ],
 
+    ['心理学',
+        ['精神分析']
+    ],
+
 
 ];
