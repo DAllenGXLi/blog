@@ -24,7 +24,7 @@ class MessageBoardController extends \yii\web\Controller
             //评论
             $model = new Comments();
             //page
-            $query = Comments::find(['article_id'=>MB_ARTICLE_ID])->orderBy(['create_at'=>SORT_DESC]);
+            $query = Comments::find(['article_id'=>MB_ARTICLE_ID])->where('id>0')->orderBy(['create_at'=>SORT_DESC]);
             $pages = new Pagination(['totalCount'=>$query->count()]);
             $pages->pageSize = MB_PAGE_SIZE;
             $models = $query->offset($pages->offset)
