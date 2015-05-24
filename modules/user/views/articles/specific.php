@@ -127,7 +127,7 @@ foreach ($models as $_model) {
             </span>
 
 <!--            评论内容-->
-            <?= $_model->content ?>
+            <?=  Html::encode($_model->content) ?>
         </div>
     </div>
 
