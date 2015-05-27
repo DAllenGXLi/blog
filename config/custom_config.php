@@ -16,7 +16,7 @@ define('ARTICLE_COMMENTS_PAGE_SIZE',10);
 //留言板的article id
 define('MB_ARTICLE_ID',0);
 //article 最少字数
-define('ARTICLE_MIN_NUM',0);
+define('ARTICLE_MIN_NUM',300);
 //article 预览中预览的文章字数
 define('ARTICLE_REVIEW_NUM',500);
 //article 预览中预览的文章title字节数
