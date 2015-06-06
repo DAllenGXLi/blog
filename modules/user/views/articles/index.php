@@ -59,7 +59,7 @@ foreach ($models as $model) {
         </div>
         <div class="panel-body">
             <span class="article">
-
+                    <?=   substr($model->summary, 0, ARTICLE_REVIEW_NUM) . ' ...' ?>
                 </span>
 
         </div>

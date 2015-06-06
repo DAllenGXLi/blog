@@ -99,6 +99,12 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
             content.name = 'content';
             content.type = 'hidden';
 
+            //内容
+            var summary = document.createElement('input');
+            summary.value = UM.getEditor('myEditor').getContentTxt().substr(0,500);
+            summary.name = 'summary';
+            summary.type = 'hidden';
+
             //标题
             var title = document.createElement('input');
             title.value = document.getElementById('article_title').value ;
@@ -124,6 +130,7 @@ $this->beginContent('@app/modules/user/views/layouts/basic.php'); ?>
 
             //标题
             form.appendChild(content);
+            form.appendChild(summary);
             form.appendChild(title);
             form.appendChild(user_id);
             form.appendChild(_class);

@@ -65,11 +65,12 @@ class Articles extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function loadForArticle($user_id, $title, $content, $class)
+    public static function loadForArticle($user_id, $title, $content,$summary, $class)
     {
         date_default_timezone_set("Etc/GMT+8");
         $model = new Articles();
         $model->setScenario('write');
+        $model->summary = $summary;
         $model->user_id = $user_id;
         $model->content = $content;
         $model->title = $title;

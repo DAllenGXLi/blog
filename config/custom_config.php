@@ -18,7 +18,7 @@ define('MB_ARTICLE_ID',0);
 //article 最少字数
 define('ARTICLE_MIN_NUM',30);
 //article 预览中预览的文章字数
-define('ARTICLE_REVIEW_NUM',500);
+define('ARTICLE_REVIEW_NUM',250);
 //article 预览中预览的文章title字节数
 define('ARTICLE_TITLE_REVIEW_NUM',60);
 //article 最大的文章title字数

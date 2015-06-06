@@ -79,7 +79,7 @@ class ArticlesController extends \yii\web\Controller
         $this->layout = false;
         if( Yii::$app->request->isPost )
         {
-            if(Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'],$_POST['class'])) {
+            if(Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'],$_POST['summary'],$_POST['class'])) {
                 $this->redirect(['articles/index','class'=>$_POST['class']]);
             }
             else{
