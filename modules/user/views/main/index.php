@@ -57,7 +57,7 @@ foreach ($models as $model) {
         </div>
         <div class="panel-body">
             <span class="article">
-            <?= substr($model->content, 0, ARTICLE_REVIEW_NUM) . ' ...' ?>
+<!--             substr($model->content, 0, ARTICLE_REVIEW_NUM) . ' ...' -->
                 </span>
 
         </div>
