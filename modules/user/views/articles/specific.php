@@ -57,7 +57,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
                     <a><?=Html::encode( Users::findOne($model->user_id)->username ) ?></a></span>
                 <?= Html::encode($model->create_at) ?></span>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="overflow: hidden;">
          <span class="article">
         <?=  $model->content ?>
              <br />
