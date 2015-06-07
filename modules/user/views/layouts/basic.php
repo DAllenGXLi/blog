@@ -33,7 +33,7 @@ $this->registerCssFile('css/main.css');
 
                         <!--                    如果已登陆，显示用户信息-->
                         <?php
-                        if( !Yii::$app->user->identity==null ) {
+                        if (!\Yii::$app->user->isGuest)  {
                         ?>
 
                         <span class="dropdown nav_user" style="float: right">
@@ -65,11 +65,11 @@ $this->registerCssFile('css/main.css');
                             <?= Yii::$app->urlManager->createUrl(['user/default/logout']) ?>">
                                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出登录</a></li>
                         </ul>
-                    </div>
+
 
                     <?php } ?>
 
-
+                    </div>
 
                 </div><!-- /.row -->
             </div>

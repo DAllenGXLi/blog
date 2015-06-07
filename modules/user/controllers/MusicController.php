@@ -14,7 +14,10 @@ class MusicController extends \yii\web\Controller
     public $layout = 'main';
     public function actionIndex()
     {
-        return $this->render('index');
+        if (!\Yii::$app->user->isGuest) {
+            return $this->render('index');
+        }
+        return $this->redirect(['default/login']);
     }
 
 }

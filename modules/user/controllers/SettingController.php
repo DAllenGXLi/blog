@@ -13,7 +13,10 @@ class SettingController extends Controller
     public $layout = 'setting_index';
     public function actionIndex()
     {
-        $this->layout = false;
-        return $this->render('index');
+        if (!\Yii::$app->user->isGuest) {
+            $this->layout = false;
+            return $this->render('index');
+        }
+        return $this->redirect(['default/login']);
     }
 }

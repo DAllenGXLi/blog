@@ -76,19 +76,21 @@ class ArticlesController extends \yii\web\Controller
 
     public function actionWrite()
     {
-        $this->layout = false;
-        if( Yii::$app->request->isPost )
-        {
-            if(Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'],$_POST['summary'],$_POST['class'])) {
-                $this->redirect(['articles/index','class'=>$_POST['class']]);
-            }
-            else{
-                echo '提交失败';
-                return false;
+
+        if (!\Yii::$app->user->isGuest) {
+            $this->layout = false;
+            if (Yii::$app->request->isPost) {
+                if (Articles::loadForArticle($_POST['user_id'], $_POST['title'], $_POST['content'], $_POST['summary'], $_POST['class'])) {
+                    $this->redirect(['articles/index', 'class' => $_POST['class']]);
+                } else {
+                    echo '提交失败';
+                    return false;
 //                var_dump('false');
+                }
             }
+            return $this->render('write');
         }
-        return $this->render('write');
+        return $this->redirect(['default/login']);
     }
 
 }

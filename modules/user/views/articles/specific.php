@@ -13,6 +13,7 @@ $js = 'document.getElementById("navigation_type_'.NAV_ARTICLE_NUM.'").setAttribu
 $this->registerJs($js, \yii\web\View::POS_READY);
 ?>
 
+
 <!--//ajax实现点赞功能-->
 <script>
 
@@ -35,9 +36,15 @@ $this->registerJs($js, \yii\web\View::POS_READY);
                 document.getElementById("thumb_up_num").innerHTML=xmlhttp.responseText;
             }
         };
-        xmlhttp.open("GET","<?= Yii::$app->urlManager->createUrl(['user/articles/thumb-up','user_id'=>Yii::$app->user->identity->id,
-                'article_id'=>$model->id, 'comment_id'=>0 ]) ?>",true);
+
+        <?php if (!\Yii::$app->user->isGuest) { ?>
+        xmlhttp.open('GET','<?= Yii::$app->urlManager->createUrl(['user/articles/thumb-up','user_id'=>Yii::$app->user->identity->id,
+                'article_id'=>$model->id, 'comment_id'=>0 ]) ?>',true);
         xmlhttp.send();
+        <?php }else{ ?>
+        alert('您还没有登陆，请先登录');
+        <?php } ?>
+
     }
 
 </script>
@@ -90,18 +97,23 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
 <!--//评论表单-->
 <!-- Small modal -->
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <form name="comments"  method="post" >
-                <textarea autofocus="autofocus" class="form-control" rows="3" name="content"></textarea>
-                <input type="hidden" name="user_id" value="<?= Yii::$app->user->identity->id ?>">
-                <button type="submit" class="btn btn-primary" style="float: right">提交</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right;">取消</button>
-            </form>
+<?php if (!\Yii::$app->user->isGuest) { ?>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form name="comments"  method="post" >
+                    <textarea autofocus="autofocus" class="form-control" rows="3" name="content"></textarea>
+                    <input type="hidden" name="user_id" value="<?= Yii::$app->user->identity->id ?>">
+                    <button type="submit" class="btn btn-primary" style="float: right">提交</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right;">取消</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+<?php }else{ ?>
+
+<?php } ?>
+
 
 <!--评论内容-->
 <?php
