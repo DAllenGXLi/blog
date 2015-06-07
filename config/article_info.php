@@ -18,11 +18,15 @@ return $_ARTICLE_INFO = [
     ],
 
     ['web技术',
-        ['yii2', 'ServerSide', 'tcp/ip协议', 'QQ协议分析']
+        ['yii2', 'ServerSide', 'tcp/ip协议']
     ],
 
-    ['cocos2d',
-        ['cocos2d-x', 'cocos2d-js']
+//    ['cocos2d',
+//        ['cocos2d-x', 'cocos2d-js']
+//    ],
+
+    ['算法',
+        ['算法基础']
     ],
 
     ['心理学',
