@@ -186,6 +186,8 @@
         uploadComplete: function(r){
             var me = this;
             try{
+                //custom
+                r=r.replace("<pre>","").replace("</pre>","");
                 var json = eval('('+r+')');
                 Base.callback(me.editor, me.dialog, json.url, json.state);
             }catch (e){
