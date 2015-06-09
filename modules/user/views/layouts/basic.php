@@ -29,7 +29,7 @@ $this->registerCssFile('css/main.css');
                 <div class="container" style="color: #e3e3e3; font-weight: bolder; font-size: 35px">
 
                     <div class="row">
-                        <span>doudou's home</span>
+                        <span>doudou's home (alpha 内测版)</span>
 
                         <!--                    如果已登陆，显示用户信息-->
                         <?php
