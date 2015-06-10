@@ -55,7 +55,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
         <!--            头像-->
             <span style="float: left; position: relative; bottom: 4px">
-            <img src="<?=  HEAD_PORTRAIT_ROOT ?>/<?= Users::findOne($model->user_id)->head_portrait ?>" height="36px"   /></span>
+            <img src="<?=  HEAD_PORTRAIT_ROOT ?>/<?= Users::findOne($model->user_id)->head_portrait ?>" height="36px"    /></span>
         <!--            文章标题-->
         <h2 class="panel-title article_title"><b><?= Html::encode($model->title) ?></b></h2>
         <!--        文章时间 作者-->

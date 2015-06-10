@@ -1,6 +1,7 @@
 <?php
 //引入全局样式，js文件等，设定背景颜色，框架
 use yii\helpers\Html;
+use app\models\Users;
 
 
 $this->registerCssFile('css/bootstrap.min.css');
@@ -34,13 +35,14 @@ $this->registerCssFile('css/main.css');
                         <!--                    如果已登陆，显示用户信息-->
                         <?php
                         if (!\Yii::$app->user->isGuest)  {
+                        $model = Yii::$app->user->identity;
                         ?>
 
                         <span class="dropdown nav_user" style="float: right">
 <!--                          用户信息-->
                         <a class=" dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             <span>
-                      <img src="<?=  HEAD_PORTRAIT_ROOT ?>/000.jpg" height="42px"  />
+                      <img src="<?=  HEAD_PORTRAIT_ROOT ?>/<?= $model->head_portrait ?>" height="42px"  />
                                 <?=Yii::$app->user->identity->username?></span>
 
                         </a>
