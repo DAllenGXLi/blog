@@ -20,7 +20,7 @@ define('ARTICLE_MIN_NUM',30);
 //article 预览中预览的文章字数
 define('ARTICLE_REVIEW_NUM',250);
 //article 预览中预览的文章title字节数
-define('ARTICLE_TITLE_REVIEW_NUM',60);
+define('ARTICLE_TITLE_REVIEW_NUM',66);
 //article 最大的文章title字数
 define('ARTICLE_TITLE_MAX_NUM',25);
 //定义yii web目录上一个目录（主目录）绝对路径
