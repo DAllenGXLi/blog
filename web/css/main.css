@@ -41,6 +41,12 @@
     color: #777777;
 }
 
+img.head_portrait_36px {
+    border-radius: 5px;
+    height: 36px;
+    margin-right: 5px;
+}
+
 .comment-text {
     color: #262626;
     font-weight: 500;

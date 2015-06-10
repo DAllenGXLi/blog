@@ -33,7 +33,8 @@ define('HEAD_PORTRAIT_ROOT',IMAGE_ROOT.'/head_portrait');
 define('MUSIC_ROOT',DOCUMENT_ROOT.'/res/music');
 //置顶日期
 define('KEEP_TOP_DATE', '2020-01-01');
-
+//定制头像圆角矩形
+define('HEAD_RADIUS', '5px');
 
 
 //个人页
