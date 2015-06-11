@@ -25,6 +25,16 @@
     height: 50px;
 }
 
+.head_message_label {
+    float: right;
+    margin-top: 10px;
+
+}
+
+.message_label {
+    background-color: rgba(255, 20, 29, 0.60);
+}
+
 .default-login {
     margin-top: 40px;
     padding-bottom: 30px;
@@ -41,7 +51,9 @@
     color: #777777;
 }
 
-img.head_portrait_36px {
+img.head_portrait_36
+
+.information_label  {
     border-radius: 5px;
     height: 36px;
     margin-right: 5px;

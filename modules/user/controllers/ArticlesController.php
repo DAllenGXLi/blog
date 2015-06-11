@@ -8,6 +8,7 @@ use yii\data\Pagination;
 use Yii;
 use app\models\Comments;
 use app\models\ThumbUp;
+use app\models\Information;
 
 class ArticlesController extends \yii\web\Controller
 {
@@ -46,7 +47,10 @@ class ArticlesController extends \yii\web\Controller
             //提交评论
         if( Yii::$app->request->isPost )
             if($_POST['content']!='') {
-                Comments::loadForMB($_POST['user_id'], $_POST['content'],$id);
+                $comment_id = Comments::loadForMB($_POST['user_id'], $_POST['content'],$id);
+
+//                录入新信息
+                Information::SaveInformation($_POST['target_user_id'],$_POST['user_id'],INFO_ARTICLE_COMMENT,$id,$comment_id);
             }
 
 //        查找评论并分页

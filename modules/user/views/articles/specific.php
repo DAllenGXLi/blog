@@ -111,7 +111,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
             <div class="modal-content">
                 <form name="comments"  method="post" >
                     <textarea autofocus="autofocus" class="form-control" rows="3" name="content"></textarea>
-                    <input type="hidden" name="user_id" value="<?= Yii::$app->user->identity->id ?>">
+                    <input type="hidden" name="user_id" value="<?= Yii::$app->user->identity->id ?>" >
+                    <input type="hidden" name="target_user_id" value="<?= Users::findOne($model->user_id)->id ?>" >
                     <button type="submit" class="btn btn-primary" style="float: right">提交</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right;">取消</button>
                 </form>

@@ -48,4 +48,8 @@ define('NAV_PHOTO_NUM',4);
 define('NAV_MB_NUM',5);
 define('NAV_CONTACT_NUM',6);
 
+//information-type
+define('INFO_ARTICLE_COMMENT',5);
+define('INFO_ARTICLE_COMMENT_REPLY',6);
+
 

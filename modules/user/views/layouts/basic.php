@@ -1,8 +1,7 @@
 <?php
 //引入全局样式，js文件等，设定背景颜色，框架
 use yii\helpers\Html;
-use app\models\Users;
-
+use app\models\Information;
 
 $this->registerCssFile('css/bootstrap.min.css');
 $this->registerJsFile('js/jquery-1.11.2.min.js',['position'=>\yii\web\View::POS_HEAD]);
@@ -30,7 +29,7 @@ $this->registerCssFile('css/main.css');
                 <div class="container" style="color: #e3e3e3; font-weight: bolder; font-size: 35px">
 
                     <div class="row">
-                        <span>doudou's home (alpha 内测版)</span>
+                        <span>doudou's home (alpha)</span>
 
                         <!--                    如果已登陆，显示用户信息-->
                         <?php
@@ -44,16 +43,27 @@ $this->registerCssFile('css/main.css');
                             <span>
                       <img src="<?=  HEAD_PORTRAIT_ROOT ?>/<?= $model->head_portrait ?>" height="42px"  />
                                 <?=Yii::$app->user->identity->username?></span>
-
+                            <!--                                    动态标签 总和-->
+                            <span class="badge head_message_label message_label">
+                                <?= Information::find()->where(['target_user_id'=>Yii::$app->user->identity->id])->count() ?>
+                            </span>
                         </a>
                           <!--                  下拉菜单    -->
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="
                             <?= Yii::$app->urlManager->createUrl(['user/personal/index','id'=>Yii::$app->user->identity->id]) ?>">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 个人主页</a></li>
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 个人主页
+<!--                                    动态标签 总和-->
+                                    <span class="badge message_label">
+                                        <?= Information::find()->where(['target_user_id'=>Yii::$app->user->identity->id])->count() ?>
+                                    </span></a>
+                                </a></li>
 
                             <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">
-                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 我的动态</a></li>
+                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 我的动态
+<!--                                    动态标签-->
+                                    <span class="badge message_label">42</span></a>
+                                </a></li>
 
                             <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="
                             <?= Yii::$app->urlManager->createUrl(['user/setting/index']) ?>">

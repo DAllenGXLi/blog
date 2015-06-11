@@ -63,5 +63,6 @@ class Comments extends \yii\db\ActiveRecord
         $model->user_id = $user_id;
         $model->create_at = date('Y-m-d H:i:s',time());
         $model->save();
+        return $model->id;
     }
 }
