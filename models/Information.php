@@ -93,8 +93,8 @@ class Information extends \yii\db\ActiveRecord
     public static function SaveInformation($target_user_id,$origin_user_id,$type,$article_id,$comment_id)
     {
 //        不允许自己向自己发送信息
-//        if($target_user_id==$origin_user_id)
-//            return;
+        if($target_user_id==$origin_user_id)
+            return;
         $model = new Information();
         $model->target_user_id = $target_user_id;
         $model->origin_user_id = $origin_user_id;
