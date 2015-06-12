@@ -7,6 +7,11 @@ $this->registerCssFile('css/bootstrap.min.css');
 $this->registerJsFile('js/jquery-1.11.2.min.js',['position'=>\yii\web\View::POS_HEAD]);
 $this->registerJsFile('js/bootstrap.min.js',['position'=>\yii\web\View::POS_HEAD]);
 $this->registerCssFile('css/main.css');
+
+//回到顶部插件
+$this->registerCssFile('css/style.css');
+//$this->registerJsFile('js/jquery.min.js',['position'=>\yii\web\View::POS_HEAD]);
+$this->registerJsFile('js/script.js',['position'=>\yii\web\View::POS_HEAD]);
 ?>
 
 <?php $this->beginPage() ?>

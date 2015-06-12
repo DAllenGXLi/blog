@@ -12,10 +12,6 @@ use app\models\ThumbUp;
 $js = 'document.getElementById("navigation_type_'.NAV_ARTICLE_NUM.'").setAttribute("class", "active") ';
 $this->registerJs($js, \yii\web\View::POS_READY);
 
-//回到顶部插件
-$this->registerCssFile('css/style.css');
-//$this->registerJsFile('js/jquery.min.js.js',['position'=>\yii\web\View::POS_HEAD]);
-$this->registerJsFile('js/script.js',['position'=>\yii\web\View::POS_HEAD]);
 
 ?>
 
@@ -70,7 +66,7 @@ $this->registerJsFile('js/script.js',['position'=>\yii\web\View::POS_HEAD]);
                     <a><?=Html::encode( Users::findOne($model->user_id)->username ) ?></a></span>
                 <?= Html::encode($model->create_at) ?></span>
     </div>
-    <div class="panel-body" style="overflow: hidden;">
+    <div class="panel-body" style="">
          <span class="article">
         <?=  $model->content ?>
              <br />
@@ -157,6 +153,10 @@ foreach ($models as $_model) {
         </div>
     </div>
 
+
+
+    <!--回到顶部-->
+    <a href="#0" class="cd-top">Top</a>
 
 <?php
 
