@@ -155,8 +155,6 @@ foreach ($models as $_model) {
 
 
 
-    <!--回到顶部-->
-    <a href="#0" class="cd-top">Top</a>
 
 <?php
 
@@ -168,3 +166,5 @@ echo LinkPager::widget([
 ]);
 ?>
 
+<!--回到顶部-->
+<a href="#0" class="cd-top">Top</a>

@@ -81,6 +81,5 @@ foreach ($models as $model) {
     </div>
 </div>
 
-<!--回到顶部-->
-<a href="#0" class="cd-top">Top</a>
+
 
