@@ -15,7 +15,7 @@ return $_ARTICLE_INFO = [
     ],
 
     ['IT技术',
-        ['html', 'tcp/ip协议']
+        ['html','PHP', 'tcp/ip协议']
     ],
 
     ['算法',
