@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\components\RemoveXSS;
 
 /**
  * This is the model class for table "articles".
@@ -19,6 +20,20 @@ use Yii;
  */
 class Articles extends \yii\db\ActiveRecord
 {
+
+    public function behaviors()
+    {
+        return [
+//            RemoveXSS::className()
+            // 匿名行为，配置数组
+            [
+                'class' => RemoveXSS::className(),
+            ],
+        ];
+    }
+
+
+
     /**
      * @inheritdoc
      */
@@ -72,7 +87,7 @@ class Articles extends \yii\db\ActiveRecord
         $model->setScenario('write');
         $model->summary = $summary;
         $model->user_id = $user_id;
-        $model->content = $content;
+        $model->content = $model->removeXSS($content);
         $model->title = $title;
         $model->class = $class;
         $model->type = 10;
