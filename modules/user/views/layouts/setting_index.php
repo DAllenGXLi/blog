@@ -6,7 +6,9 @@
  * Time: 18:56
  */
 
-$this->beginContent('@app/modules/user/views/layouts/main.php'); ?>
+//$this->beginContent('@app/modules/user/views/layouts/main.php');
+$this->beginContent('@app/modules/user/views/layouts/basic.php');
+?>
 
 
 

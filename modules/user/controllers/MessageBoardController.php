@@ -9,7 +9,7 @@ use Yii;
 class MessageBoardController extends \yii\web\Controller
 {
     public $enableCsrfValidation = false;
-    public $layout = 'main';
+    public $layout = 'basic';
     public function actionIndex()
     {
         if (!\Yii::$app->user->isGuest) {

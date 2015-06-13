@@ -7,7 +7,9 @@
  */
 use app\models\Users;
 $user = Users::findOne($this->context->user_id);
-$this->beginContent('@app/modules/user/views/layouts/main.php'); ?>
+//$this->beginContent('@app/modules/user/views/layouts/main.php');
+$this->beginContent('@app/modules/user/views/layouts/basic.php');
+?>
 
 
 <div class="row">

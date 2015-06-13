@@ -6,7 +6,10 @@
  * Time: 18:56
  */
 require_once(__DIR__.'/../../../../config/article_info.php');
-$this->beginContent('@app/modules/user/views/layouts/main.php'); ?>
+//$this->beginContent('@app/modules/user/views/layouts/main.php');
+$this->beginContent('@app/modules/user/views/layouts/basic.php');
+
+?>
 
 
 

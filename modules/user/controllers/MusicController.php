@@ -11,7 +11,7 @@ namespace app\modules\user\controllers;
 
 class MusicController extends \yii\web\Controller
 {
-    public $layout = 'main';
+    public $layout = 'basic';
     public function actionIndex()
     {
         if (!\Yii::$app->user->isGuest) {

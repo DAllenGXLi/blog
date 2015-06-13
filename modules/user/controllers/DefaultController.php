@@ -8,7 +8,7 @@ use Yii;
 use app\models\Users;
 class DefaultController extends Controller
 {
-    public $layout = 'main';
+    public $layout = 'basic';
 
     public function actions()
     {

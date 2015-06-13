@@ -9,7 +9,10 @@ $js_navigation = 'document.getElementById("navigation_type_'.NAV_HOME_NUM.'").se
 $this->registerJs($js_navigation, \yii\web\View::POS_READY);
 ?>
 
-<?php $this->beginContent('@app/modules/user/views/layouts/main.php'); ?>
+<?php
+//$this->beginContent('@app/modules/user/views/layouts/main.php');
+$this->beginContent('@app/modules/user/views/layouts/basic.php');
+?>
 
 
 

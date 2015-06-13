@@ -10,8 +10,9 @@ $this->registerCssFile('css/main.css');
 
 //回到顶部插件
 $this->registerCssFile('css/style.css');
-//$this->registerJsFile('js/jquery.min.js',['position'=>\yii\web\View::POS_HEAD]);
 $this->registerJsFile('js/script.js',['position'=>\yii\web\View::POS_HEAD]);
+//导航效果css
+$this->registerCssFile('nav/css/_css.css');
 ?>
 
 <?php $this->beginPage() ?>
@@ -25,71 +26,89 @@ $this->registerJsFile('js/script.js',['position'=>\yii\web\View::POS_HEAD]);
     <body background="<?=  IMAGE_ROOT ?>/home/bg_img.jpg" style="background-color: rgba(228, 228, 229, 0.89); ">
         <?php $this->beginBody() ?>
 
+        <div id="nav_bg"></div>
 
         <div id="div_main">
 
-
             <!--   top-->
-            <div class="nav_head">
+            <div class=" nav navbar-fixed-top">
                 <div class="container" style="color: #e3e3e3; font-weight: bolder; font-size: 35px">
 
                     <div class="row">
-                        <span>doudou's home (alpha)</span>
+                        <span class="nav_logo_title">doudou's home</span>
+
+                        <span class="nav_menu">
+                                <ul class="_menu">
+                                    <li><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/main/index"]) ?>">主页</a></li>
+                                    <li><a href="
+                <?= Yii::$app->urlManager->createUrl(["user/articles/index",'class'=>'ALL']) ?>">文章</a></li>
+
+                                    <li><a href="#">娱乐</a>
+                                        <ul class="_submenu">
+                                            <li><a href="#">音乐</a></li>
+                                            <li><a href="#">电影</a></li>
+                                            <li><a href="#">游戏</a></li>
+                                            <li><a href="#">图片</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="#">留言板</a></li>
+
+                                </ul>
+                        </span>
+
 
                         <!--                    如果已登陆，显示用户信息-->
                         <?php
                         if (!\Yii::$app->user->isGuest)  {
                         $model = Yii::$app->user->identity;
                         ?>
+<!--                        头像-->
+                         <span class="nav_user">
+                                <ul class="_menu">
+                                    <li><a href="#">
+                                            <img src="<?=  HEAD_PORTRAIT_ROOT ?>/<?= $model->head_portrait ?>" height="40px"  />
+                                            <?=Yii::$app->user->identity->username?>
+                                        </a>
+                                        <ul class="_submenu">
 
-                        <span class="dropdown nav_user" style="float: right">
-<!--                          用户信息-->
-                        <a class=" dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            <span>
-                      <img src="<?=  HEAD_PORTRAIT_ROOT ?>/<?= $model->head_portrait ?>" height="42px"  />
-                                <?=Yii::$app->user->identity->username?></span>
-                            <!--                                    动态标签 总和-->
-                            <span class="badge head_message_label message_label">
-                                <?= Information::find()->where(['target_user_id'=>Yii::$app->user->identity->id])->count() ?>
-                            </span>
-                        </a>
-                          <!--                  下拉菜单    -->
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="
-                            <?= Yii::$app->urlManager->createUrl(['user/personal/index','id'=>Yii::$app->user->identity->id]) ?>">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 个人主页
-<!--                                    动态标签 总和-->
-                                    <span class="badge message_label">
-                                        <?= Information::find()->where(['target_user_id'=>Yii::$app->user->identity->id])->count() ?>
-                                    </span></a>
-                                </a></li>
 
-                            <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">
-                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 我的动态
-<!--                                    动态标签-->
-                                    <span class="badge message_label">42</span></a>
-                                </a></li>
 
-                            <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="
+                                            <li>
+                                                <a role="menuitem" tabindex="-1" href="
                             <?= Yii::$app->urlManager->createUrl(['user/setting/index']) ?>">
-                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 账户设置</a></li>
+                                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 账户设置</a>
+                                            </li>
 
-                            <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 我的收藏</a></li>
+                                            <li>
+                                                <a role="menuitem" tabindex="-1" href="#">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 我的收藏</a>
+                                            </li>
 
-                            <li role="presentation" class="divider" style="background-color: rgba(93, 93, 94, 0.89)"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="
+                                            <li><a href="#">
+                                                    <a role="menuitem" tabindex="-1" href="
                             <?= Yii::$app->urlManager->createUrl(['user/default/logout']) ?>">
-                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出登录</a></li>
-                        </ul>
+                                                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出登录</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                        </span>
 
+                        <?php } ?>
 
-                    <?php } ?>
 
                     </div>
 
                 </div><!-- /.row -->
             </div>
+
+
+
+
+
+
 
 
         <div class="container main_body" >
