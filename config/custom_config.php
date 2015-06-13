@@ -8,9 +8,9 @@
 
 
 //每页文章数量
-define('ARTICLE_PAGE_SIZE',10);
+define('ARTICLE_PAGE_SIZE',15);
 //每页留言板数量
-define('MB_PAGE_SIZE',10);
+define('MB_PAGE_SIZE',15);
 //文章评论每页条数
 define('ARTICLE_COMMENTS_PAGE_SIZE',10);
 //留言板的article id
