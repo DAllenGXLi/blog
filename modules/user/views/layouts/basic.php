@@ -31,14 +31,18 @@ $this->registerCssFile('nav/css/_css.css');
         <div id="div_main">
 
             <!--   top-->
-            <div class=" nav navbar-fixed-top">
+                <nav class=" navbar navbar-fixed-top">
                 <div class="container" style="color: #e3e3e3; font-weight: bolder; font-size: 35px">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        </button>
+                        <span class="nav_logo_title">dou</span>
+                    </div>
 
-                    <div class="row">
-                        <span class="nav_logo_title">doudou's home</span>
-
-                        <span class="nav_menu">
-                                <ul class="_menu">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="_menu ">
                                     <li><a href="
                 <?= Yii::$app->urlManager->createUrl(["user/main/index"]) ?>">主页</a></li>
                                     <li><a href="
@@ -52,11 +56,8 @@ $this->registerCssFile('nav/css/_css.css');
                                             <li><a href="#">图片</a></li>
                                         </ul>
                                     </li>
-
                                     <li><a href="#">留言板</a></li>
-
                                 </ul>
-                        </span>
 
 
                         <!--                    如果已登陆，显示用户信息-->
@@ -73,23 +74,27 @@ $this->registerCssFile('nav/css/_css.css');
                                         </a>
                                         <ul class="_submenu">
 
-
+                                            <li>
+                                                <a role="menuitem" tabindex="-1" href="
+                            <?= Yii::$app->urlManager->createUrl(['user/setting/index']) ?>">
+                                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 主页</a>
+                                            </li>
 
                                             <li>
                                                 <a role="menuitem" tabindex="-1" href="
                             <?= Yii::$app->urlManager->createUrl(['user/setting/index']) ?>">
-                                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 账户设置</a>
+                                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 设置</a>
                                             </li>
 
                                             <li>
                                                 <a role="menuitem" tabindex="-1" href="#">
-                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 我的收藏</a>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 收藏</a>
                                             </li>
 
                                             <li><a href="#">
                                                     <a role="menuitem" tabindex="-1" href="
                             <?= Yii::$app->urlManager->createUrl(['user/default/logout']) ?>">
-                                                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出登录</a>
+                                                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -99,11 +104,9 @@ $this->registerCssFile('nav/css/_css.css');
                         <?php } ?>
 
 
-                    </div>
-
-                </div><!-- /.row -->
-            </div>
-
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </nav>
 
 
 

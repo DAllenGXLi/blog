@@ -13,6 +13,8 @@
 }
 .nav_logo_title{
     float: left;
+    font-size: 34px;
+    font-weight: bolder;
     margin-right: 30px;
 }
 .nav_menu{

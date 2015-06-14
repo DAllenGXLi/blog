@@ -15,6 +15,7 @@
 }
 ._menu {
     height: 44px;
+    float: left;
 }
 ._menu li {
     background: -moz-linear-gradient(#292929, #252525);
@@ -28,7 +29,8 @@
 
     border-bottom: 2px solid #181818;
     border-top: 2px solid #303030;
-    min-width: 160px;
+    min-width: 120px;
+
 }
 ._menu > li {
     display: block;

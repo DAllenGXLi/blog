@@ -82,12 +82,16 @@ class Articles extends \yii\db\ActiveRecord
 
     public static function loadForArticle($user_id, $title, $content,$summary, $class)
     {
+        $user = Yii::$app->user->identity;
         date_default_timezone_set("Etc/GMT+8");
         $model = new Articles();
         $model->setScenario('write');
         $model->summary = $summary;
         $model->user_id = $user_id;
-        $model->content = $model->removeXSS($content);
+        if( $user->username == 'dou' )
+            $model->content = $content;
+        else
+            $model->content = $model->removeXSS($content);
         $model->title = $title;
         $model->class = $class;
         $model->type = 10;
