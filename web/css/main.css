@@ -21,6 +21,7 @@
     float: left;
 }
 .nav_user{
+    font-size: 14px;
     height: 44px;
     float: right;
 }
@@ -49,16 +50,10 @@
 /*}*/
 
 .head_message_label {
-    float: right;
-    margin-top: 10px;
-
+    background-color: rgba(255, 20, 29, 0.6);
 }
 
 .message_label {
-    float: right;
-    position: relative;
-    bottom: 45px;
-    left: 10px;
     background-color: rgba(255, 20, 29, 0.6);
 }
 

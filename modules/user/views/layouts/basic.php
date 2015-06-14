@@ -35,8 +35,6 @@ $this->registerCssFile('nav/css/_css.css');
                 <div class="container" style="color: #e3e3e3; font-weight: bolder; font-size: 35px">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        </button>
                         <span class="nav_logo_title">dou</span>
                     </div>
 
@@ -65,19 +63,26 @@ $this->registerCssFile('nav/css/_css.css');
                         if (!\Yii::$app->user->isGuest)  {
                         $model = Yii::$app->user->identity;
                         ?>
+
 <!--                        头像-->
                          <span class="nav_user">
                                 <ul class="_menu">
                                     <li><a href="#">
                                             <img src="<?=  HEAD_PORTRAIT_ROOT ?>/<?= $model->head_portrait ?>" height="40px"  />
-                                            <?=Yii::$app->user->identity->username?>
+<!--                                           信息量-->
+                                            <span class="badge head_message_label">
+                                        <?= Information::find()->where(['target_user_id'=>Yii::$app->user->identity->id])->count() ?>
+                                    </span>
                                         </a>
                                         <ul class="_submenu">
 
                                             <li>
                                                 <a role="menuitem" tabindex="-1" href="
-                            <?= Yii::$app->urlManager->createUrl(['user/setting/index']) ?>">
-                                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 主页</a>
+                            <?= Yii::$app->urlManager->createUrl(['user/setting/index']) ?>">主页
+                                                <span class="badge message_label">
+                                        <?= Information::find()->where(['target_user_id'=>Yii::$app->user->identity->id])->count() ?>
+                                    </span>
+                                                </a>
                                             </li>
 
                                             <li>
