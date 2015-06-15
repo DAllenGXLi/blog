@@ -7,6 +7,8 @@ $this->registerCssFile('css/bootstrap.min.css');
 $this->registerJsFile('js/jquery-1.11.2.min.js',['position'=>\yii\web\View::POS_HEAD]);
 $this->registerJsFile('js/bootstrap.min.js',['position'=>\yii\web\View::POS_HEAD]);
 $this->registerCssFile('css/main.css');
+//theme
+$this->registerCssFile('css/theme/black.css');
 
 //回到顶部插件
 $this->registerCssFile('css/style.css');
