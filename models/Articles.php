@@ -87,7 +87,8 @@ class Articles extends \yii\db\ActiveRecord
         $model->setScenario('write');
         $model->summary = $summary;
         $model->user_id = $user_id;
-        $model->content = $model->removeXSS($content);
+//      $content = $model->removeXSS($content); //过滤xss
+        $model->content = $content;
         $model->title = $title;
         $model->class = $class;
         $model->type = 10;
