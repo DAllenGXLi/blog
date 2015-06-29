@@ -16,10 +16,10 @@ return $_ARTICLE_INFO = [
 
     ['编程技术',
         ['C/C++', 'Java']
-    ]
+    ],
 
     ['计算机网络',
-        ['html','PHP', 'tcp/ip协议']
+        ['html','PHP','tcp/ip协议']
     ],
 
     ['算法',
